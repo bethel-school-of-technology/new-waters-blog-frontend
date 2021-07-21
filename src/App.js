@@ -4,7 +4,6 @@ import HomePage from "./pages/home";
 function App() {
   return (
     <>
-      <div>Hello World</div>
       <HomePage />
     </>
   );
