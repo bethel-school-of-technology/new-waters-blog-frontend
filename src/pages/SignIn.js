@@ -1,32 +1,42 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { TextField } from "@material-ui/core";
+import { TextField as MuiTextField, Typography} from "@material-ui/core";
 import styled from "styled-components";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     "& > *": {
+//       margin: theme.spacing(1),
+//       width: "25ch",
+//     },
+//   },
+// }));
 
-const Column = styled.div`
+const FormColumn = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TextField = styled(MuiTextField)`
+  margin: 0.5rem;
 `;
 
 const SignIn = () => {
-  const classes = useStyles();
+  //   const classes = useStyles();
   return (
-    <Column>
-      {/* <form className={classes.root} noValidate autoComplete="off"> */}
-      <TextField id="standard-basic" label="Standard" />
-      <TextField id="filled-basic" label="Filled" variant="filled" />
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      {/* </form> */}
-    </Column>
+    <FormColumn>
+      <Typography variant="h5">New Waters</Typography>
+      <Typography variant="h6">Sign in</Typography>
+      <TextField id="email" label="Email" type="email" variant="outlined" />
+      <TextField
+        id="password"
+        label="Password"
+        type="password"
+        variant="outlined"
+      />
+    </FormColumn>
   );
 };
 

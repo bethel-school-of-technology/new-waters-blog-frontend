@@ -8,9 +8,7 @@ import {
   Grid,
 } from "@material-ui/core";
 import styled from "styled-components";
-import MessageType from "../components/MessageType";
 import BlogForm from "../components/BlogForm";
-import logo from "../images/logo.png";
 import "../images/styles.css";
 
 const SpacingDiv = styled.div`
@@ -69,9 +67,6 @@ const Home = () => {
         <Typography variant="p">
           News that brings life in the midst of a world in chaos
         </Typography>
-        {/* <Logo>
-          <img className="logo" src={logo} alt="Logo" />
-        </Logo> */}
       </Title>
       <PaperBox>
         <Paper>
