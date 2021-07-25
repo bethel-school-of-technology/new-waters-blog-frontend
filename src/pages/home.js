@@ -61,7 +61,7 @@ const Logo = styled.div`
   height: 20px;
 `;
 
-const HomePage = () => {
+const Home = () => {
   return (
     <Box>
       <Title>
@@ -143,7 +143,7 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
 
 {
   /* <TextField
