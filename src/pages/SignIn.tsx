@@ -165,9 +165,7 @@ const SignIn: React.FunctionComponent = () => {
           } = props;
           return (
             <Form>
-              <Typography variant="h4" className={classes.title}>
-                Sign In
-              </Typography>
+              {/* <Typography variant="h5">New Waters</Typography> */}
               <Grid container justify="space-around">
                 <Grid item className={classes.textField}>
                   {/* Email */}
@@ -215,7 +213,7 @@ const SignIn: React.FunctionComponent = () => {
                     color="secondary"
                     disabled={isSubmitting}
                   >
-                    Log In
+                    Sign In
                   </Button>
                   {displayFormStatus && (
                     <div className="formStatus">

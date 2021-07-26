@@ -144,9 +144,10 @@ const SignUp: React.FunctionComponent = () => {
           } = props;
           return (
             <Form>
-              <Typography variant="h4" className={classes.title}>
+              {/* <Typography variant="h4" className={classes.title}>
                 Sign up
               </Typography>
+              <Typography variant="h5">New Waters</Typography> */}
               <Grid container justify="space-around">
                 <Grid item className={classes.textField}>
                   <Row>
@@ -247,7 +248,7 @@ const SignUp: React.FunctionComponent = () => {
                     color="secondary"
                     disabled={isSubmitting}
                   >
-                    Submit
+                    Register Account
                   </Button>
                   {displayFormStatus && (
                     <div className="formStatus">
