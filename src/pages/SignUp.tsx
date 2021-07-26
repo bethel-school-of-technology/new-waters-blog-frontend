@@ -25,7 +25,7 @@ const Column = styled.div`
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      //   maxWidth: "450px",
+      maxWidth: "200px",
       display: "block",
       margin: "0 auto",
     },
@@ -144,9 +144,10 @@ const SignUp: React.FunctionComponent = () => {
           } = props;
           return (
             <Form>
-              <Typography variant="h4" className={classes.title}>
+              {/* <Typography variant="h4" className={classes.title}>
                 Sign up
               </Typography>
+              <Typography variant="h5">New Waters</Typography> */}
               <Grid container justify="space-around">
                 <Grid item className={classes.textField}>
                   <Row>
@@ -247,7 +248,7 @@ const SignUp: React.FunctionComponent = () => {
                     color="secondary"
                     disabled={isSubmitting}
                   >
-                    Submit
+                    Register Account
                   </Button>
                   {displayFormStatus && (
                     <div className="formStatus">

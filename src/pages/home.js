@@ -15,16 +15,6 @@ const SpacingDiv = styled.div`
   padding: 0.5rem;
 `;
 
-const Title = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  // gap: 5rem;
-  padding: 1rem;
-  background: lightblue;
-  min-width: 100%;
-`;
-
 const Box = styled(MuiBox)`
   display: flex;
   flex-direction: column;
@@ -54,68 +44,12 @@ const Item = styled(MuiPaper)`
   margin: 1rem;
 `;
 
-const Logo = styled.div`
-  width: 20px;
-  height: 20px;
-`;
-
 const Home = () => {
   return (
     <Box>
-      <Title>
-        <Typography variant="h5">New Waters</Typography>
-        <Typography variant="p">
-          News that brings life in the midst of a world in chaos
-        </Typography>
-      </Title>
       <PaperBox>
         <Paper>
           <Row>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
             <div>
               <Item elevation={3}>
                 <BlogForm />
