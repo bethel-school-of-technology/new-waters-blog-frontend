@@ -58,6 +58,7 @@ import * as Yup from "yup";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      maxWidth: "200px",
       display: "block",
       margin: "0 auto",
     },

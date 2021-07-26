@@ -25,7 +25,7 @@ const Column = styled.div`
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      //   maxWidth: "450px",
+      maxWidth: "200px",
       display: "block",
       margin: "0 auto",
     },
