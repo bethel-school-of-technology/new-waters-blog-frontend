@@ -13,6 +13,7 @@ const Title = styled.div`
   padding: 1rem;
   background: lightblue;
   min-width: 100%;
+  margin-bottom: 1rem;
 `;
 
 function App() {
@@ -24,8 +25,8 @@ function App() {
           News that brings life in the midst of a world in chaos
         </Typography>
       </Title>
-      {/* <SignUp /> */}
-      {/* <SignIn /> */}
+      <SignUp />
+      <SignIn />
       <Home />
     </>
   );

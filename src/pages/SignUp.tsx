@@ -12,16 +12,6 @@ import { Formik, Form, FormikProps } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -35,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     submitButton: {
-      marginTop: "24px",
+      marginTop: "",
     },
     title: { textAlign: "center" },
     successMessage: { color: "green" },
@@ -150,105 +140,97 @@ const SignUp: React.FunctionComponent = () => {
               <Typography variant="h5">New Waters</Typography> */}
               <Grid container justify="space-around">
                 <Grid item className={classes.textField}>
-                  <Row>
-                    <Column>
-                      {/* Full Name */}
-                      <Grid item className={classes.textField}>
-                        <TextField
-                          name="fullName"
-                          id="fullName"
-                          label="Full Name"
-                          value={values.fullName}
-                          type="text"
-                          variant="outlined"
-                          helperText={
-                            errors.fullName && touched.fullName
-                              ? errors.fullName
-                              : "Enter your full name."
-                          }
-                          error={
-                            errors.fullName && touched.fullName ? true : false
-                          }
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                      </Grid>
+                  {/* Full Name */}
+                  <Grid item className={classes.textField}>
+                    <TextField
+                      name="fullName"
+                      id="fullName"
+                      label="Full Name"
+                      value={values.fullName}
+                      type="text"
+                      variant="outlined"
+                      helperText={
+                        errors.fullName && touched.fullName
+                          ? errors.fullName
+                          : "Enter your full name."
+                      }
+                      error={errors.fullName && touched.fullName ? true : false}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Grid>
 
-                      {/* Email */}
-                      <Grid item className={classes.textField}>
-                        <TextField
-                          name="email"
-                          id="email"
-                          label="Email"
-                          value={values.email}
-                          type="email"
-                          variant="outlined"
-                          helperText={
-                            errors.email && touched.email
-                              ? errors.email
-                              : "Enter email"
-                          }
-                          error={errors.email && touched.email ? true : false}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                      </Grid>
-                    </Column>
-                    <Column>
-                      {/* Password */}
-                      <Grid item className={classes.submitButton}>
-                        <TextField
-                          name="password"
-                          id="password"
-                          label="Password"
-                          value={values.password}
-                          type="password"
-                          variant="outlined"
-                          helperText={
-                            errors.password && touched.password
-                              ? "Password must contain at least one uppercase, one lowercase, one special character and no spaces"
-                              : "Enter Password"
-                          }
-                          error={
-                            errors.password && touched.password ? true : false
-                          }
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                      </Grid>
+                  {/* Email */}
+                  <Grid item className={classes.textField}>
+                    <TextField
+                      name="email"
+                      id="email"
+                      label="Email"
+                      value={values.email}
+                      type="email"
+                      variant="outlined"
+                      helperText={
+                        errors.email && touched.email
+                          ? errors.email
+                          : "Enter email"
+                      }
+                      error={errors.email && touched.email ? true : false}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Grid>
 
-                      {/* Confirm Password */}
-                      <Grid item className={classes.textField}>
-                        <TextField
-                          name="confirmPassword"
-                          id="confirmPassword"
-                          label="Confirm password"
-                          value={values.confirmPassword}
-                          type="password"
-                          variant="outlined"
-                          helperText={
-                            errors.confirmPassword && touched.confirmPassword
-                              ? errors.confirmPassword
-                              : "Re-enter password to confirm"
-                          }
-                          error={
-                            errors.confirmPassword && touched.confirmPassword
-                              ? true
-                              : false
-                          }
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                        />
-                      </Grid>
-                    </Column>
-                  </Row>
+                  {/* Password */}
+                  <Grid item className={classes.submitButton}>
+                    <TextField
+                      name="password"
+                      id="password"
+                      label="Password"
+                      value={values.password}
+                      type="password"
+                      variant="outlined"
+                      helperText={
+                        errors.password && touched.password
+                          ? "Password must contain at least one uppercase, one lowercase, one special character and no spaces"
+                          : "Enter Password"
+                      }
+                      error={errors.password && touched.password ? true : false}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Grid>
+
+                  {/* Confirm Password */}
+                  <Grid item className={classes.textField}>
+                    <TextField
+                      name="confirmPassword"
+                      id="confirmPassword"
+                      label="Confirm password"
+                      value={values.confirmPassword}
+                      type="password"
+                      variant="outlined"
+                      helperText={
+                        errors.confirmPassword && touched.confirmPassword
+                          ? errors.confirmPassword
+                          : "Re-enter password to confirm"
+                      }
+                      error={
+                        errors.confirmPassword && touched.confirmPassword
+                          ? true
+                          : false
+                      }
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </Grid>
+
                   <Button
                     type="submit"
                     variant="contained"
                     color="secondary"
                     disabled={isSubmitting}
                   >
-                    Register Account
+                    Register
                   </Button>
                   {displayFormStatus && (
                     <div className="formStatus">
