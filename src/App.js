@@ -1,10 +1,14 @@
 // import "./App.css";
-import HomePage from "./pages/home";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <>
-      <HomePage />
+      <SignUp />
+      <SignIn />
+      <Home />
     </>
   );
 }
