@@ -10,6 +10,7 @@ import {
 import styled from "styled-components";
 import BlogForm from "../components/BlogForm";
 import "../images/styles.css";
+import { Link } from "react-router-dom";
 
 const SpacingDiv = styled.div`
   padding: 0.5rem;
@@ -46,29 +47,62 @@ const Item = styled(MuiPaper)`
 
 const Home = () => {
   return (
-    <Box>
-      <PaperBox>
-        <Paper>
-          <Row>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-          </Row>
-        </Paper>
-      </PaperBox>
-    </Box>
+    <>
+      <div>TEMPORARY DEV LINKS</div>
+      <ul>
+        <li>
+          <Link to="/auth/sign-up">Sign Up</Link>
+        </li>
+        <li>
+          <Link to="/auth/sign-in">Sign In</Link>
+        </li>
+        <li>
+          <Link to="/home">Home</Link>
+        </li>
+        <li>
+          <Link to="/:blog">User Blog</Link>
+        </li>
+        <li>
+          <Link to="/:user">User</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+      </ul>
+      <Box>
+        <PaperBox>
+          <Paper>
+            <Row>
+              <div>
+                <Item elevation={3}>
+                  <BlogForm />
+                </Item>
+              </div>
+              <div>
+                <Item elevation={3}>
+                  <BlogForm />
+                </Item>
+              </div>
+              <div>
+                <Item elevation={3}>
+                  <BlogForm />
+                </Item>
+              </div>
+              <div>
+                <Item elevation={3}>
+                  <BlogForm />
+                </Item>
+              </div>
+              <div>
+                <Item elevation={3}>
+                  <BlogForm />
+                </Item>
+              </div>
+            </Row>
+          </Paper>
+        </PaperBox>
+      </Box>
+    </>
   );
 };
 
