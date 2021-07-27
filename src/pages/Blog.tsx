@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const Blog = () => {
   return (
     <div>
+      <div>Individual Blog Page</div>
       <div>TEMPORARY DEV LINKS</div>
       <ul>
         <li>
@@ -16,16 +17,15 @@ const Blog = () => {
           <Link to="/home">Home</Link>
         </li>
         <li>
-          <Link to="/:blog">User Blog</Link>
+          <Link to="/blog">User Blog</Link>
         </li>
         <li>
-          <Link to="/:user">User</Link>
+          <Link to="/user">User</Link>
         </li>
         <li>
           <Link to="/about">About</Link>
         </li>
       </ul>
-      <div></div>
     </div>
   );
 };

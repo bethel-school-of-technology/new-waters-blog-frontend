@@ -63,8 +63,8 @@ const Routes = () => (
       <Route exact path="/auth/sign-up"></Route>
       <Route exact path="/home"></Route>
       <Route exact path="/about"></Route>
-      <Route path="/:blog"></Route>
-      <Route path="/:user"></Route>
+      <Route exact path="/blog"></Route>
+      <Route exact path="/user"></Route>
     </Switch>
   </Router>
 );

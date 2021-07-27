@@ -27,7 +27,7 @@ const aboutRoute = {
 
 const userRoute = {
   id: "User",
-  path: "/:user",
+  path: "/user",
   children: null,
   component: User,
   icon: null,
@@ -36,7 +36,7 @@ const userRoute = {
 
 const blogRoute = {
   id: "blog",
-  path: "/:blog",
+  path: "/blog",
   children: null,
   component: Blog,
   icon: null,
