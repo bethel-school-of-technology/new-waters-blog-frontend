@@ -35,7 +35,8 @@ const PaperBox = styled(MuiPaper)`
 const Paper = styled(MuiPaper)`
   display: flex  
   padding: 1rem 3rem;
-  max-width: 81rem;
+  max-width: 85rem;
+  // min-width: 85rem;
   `;
 
 const Row = styled.div`
@@ -43,7 +44,7 @@ const Row = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 3rem;
+  padding: 2rem;
 `;
 
 const Item = styled(MuiPaper)`
@@ -128,40 +129,15 @@ const SignIn: React.FunctionComponent = () => {
     }
   };
 
+  console.log();
+
   return (
     <>
-      {/* <div>Sign In Page</div>
-      <div>TEMPORARY DEV LINKS</div>
-      <ul>
-        <li>
-          <Link to="/auth/sign-up">Sign Up</Link>
-        </li>
-        <li>
-          <Link to="/auth/sign-in">Sign In</Link>
-        </li>
-        <li>
-          <Link to="/home">Home</Link>
-        </li>
-        <li>
-          <Link to="/blog">User Blog</Link>
-        </li>
-        <li>
-          <Link to="/user">User</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul> */}
       <Box>
         <PaperBox>
+          <Typography variant="h5">Sign In</Typography>
           <Paper>
             <Row>
-              <ul>
-                <div>Sign In Page</div>
-                <li>
-                  <Link to="/home">Home</Link>
-                </li>
-              </ul>
               <div className={classes.root}>
                 <Formik
                   initialValues={{
@@ -194,7 +170,6 @@ const SignIn: React.FunctionComponent = () => {
                     } = props;
                     return (
                       <Form>
-                        {/* <Typography variant="h5">New Waters</Typography> */}
                         <Grid container justify="space-around">
                           <Grid item className={classes.textField}>
                             {/* Email */}
@@ -249,7 +224,9 @@ const SignIn: React.FunctionComponent = () => {
                               disabled={isSubmitting}
                             >
                               Sign In
+                              <Link to="/home">Home</Link>
                             </Button>
+                            <Link to="/auth/sign-up">Sign Up / Register</Link>
                             {displayFormStatus && (
                               <div className="formStatus">
                                 {formStatus.type === "error" ? (

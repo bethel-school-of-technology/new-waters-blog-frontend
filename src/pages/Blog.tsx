@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box as MuiBox, Paper as MuiPaper } from "@material-ui/core";
+import BlogForm from "../components/BlogForm";
 
 const SpacingDiv = styled.div`
   padding: 0.5rem;
@@ -22,9 +23,12 @@ const PaperBox = styled(MuiPaper)`
 
 const Paper = styled(MuiPaper)`
   display: flex  
+  // flex-direction: column;
+  // align-items: center;
   padding: 1rem 3rem;
-  max-width: 81rem;
-  // min-width: 81rem;
+  margin: 2rem;
+  max-width: 85rem;
+  // min-width: 85rem;
   `;
 
 const Row = styled.div`
@@ -32,6 +36,7 @@ const Row = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 2rem;
 `;
 
 const Item = styled(MuiPaper)`
@@ -42,42 +47,33 @@ const Item = styled(MuiPaper)`
 const Blog = () => {
   return (
     <>
-      {/* <div>TEMPORARY DEV LINKS</div>
-      <ul>
-        <li>
-          <Link to="/auth/sign-up">Sign Up</Link>
-        </li>
-        <li>
-          <Link to="/auth/sign-in">Sign In</Link>
-        </li>
-        <li>
-          <Link to="/home">Home</Link>
-        </li>
-        <li>
-          <Link to="/blog">User Blog</Link>
-        </li>
-        <li>
-          <Link to="/user">User</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul> */}
       <Box>
-        <PaperBox>
-          <Paper>
-            <Row>
-              <ul>
-                <li>
-                  <div>Individual Blog Page</div>
-                </li>
-                <li>
-                  <Link to="/home">Home</Link>
-                </li>
-              </ul>
-            </Row>
-          </Paper>
-        </PaperBox>
+        {/* <PaperBox> */}
+        <Paper>
+          <Row>
+            <div>
+              <Item elevation={3}>
+                <BlogForm />
+              </Item>
+            </div>
+            <div>
+              <Item elevation={3}>
+                <BlogForm />
+              </Item>
+            </div>
+            <div>
+              <Item elevation={3}>
+                <BlogForm />
+              </Item>
+            </div>
+            <div>
+              <Item elevation={3}>
+                <BlogForm />
+              </Item>
+            </div>
+          </Row>
+        </Paper>
+        {/* </PaperBox> */}
       </Box>
     </>
   );

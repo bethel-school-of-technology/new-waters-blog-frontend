@@ -2,7 +2,7 @@ import React from "react";
 import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
 import Home from "../pages/Home";
-import About from "../pages/About";
+// import About from "../pages/About";
 import User from "../pages/User";
 import Blog from "../pages/Blog";
 
@@ -16,14 +16,14 @@ const homeRoute = {
   component: Home,
 };
 
-const aboutRoute = {
-  id: "About",
-  path: "/about",
-  children: null,
-  component: About,
-  icon: null,
-  guard: null,
-};
+// const aboutRoute = {
+//   id: "About",
+//   path: "/about",
+//   children: null,
+//   component: About,
+//   icon: null,
+//   guard: null,
+// };
 
 const userRoute = {
   id: "User",
@@ -64,4 +64,9 @@ const authRoutes = {
 
 export const authLayoutRoutes = [authRoutes];
 
-export const pageRoutes = [homeRoute, aboutRoute, userRoute, blogRoute];
+export const pageRoutes = [
+  homeRoute,
+  // aboutRoute,
+  userRoute,
+  blogRoute,
+];

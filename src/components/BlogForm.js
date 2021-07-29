@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: 400,
+    minWidth: 616,
     maxWidth: 225,
   },
   media: {
@@ -53,42 +53,22 @@ const BlogForm = () => {
               <MoreVertIcon />
             </IconButton>
           }
-          title="BLOOOOO"
-          subheader="BLAAAAAAA"
+          title="Title of post here"
+          // subheader="BLAAAAAAA"
         />
-        <ul>
-          <li>
-            <div>Home Page</div>
-          </li>
-          <li>
-            <Link to="/auth/sign-up">Sign Up</Link>
-          </li>
-          <li>
-            <Link to="/auth/sign-in">Sign In</Link>
-          </li>
-          <li>
-            <Link to="/blog">User Blog</Link>
-          </li>
-          <li>
-            <Link to="/user">User</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-        <CardMedia className={classes.media} image="" title="DEEEEEEE" />
-        <CardContent>
+        <CardMedia className={classes.media} image="https://static-cse.canva.com/blob/130199/17.b1ccd4a6.png" title="Image / media">Place Media Here</CardMedia>
+        {/* <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             NERRRRRRR
           </Typography>
-        </CardContent>
+        </CardContent> */}
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
+          {/* <IconButton aria-label="add to favorites">
             <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
+          </IconButton> */}
+          {/* <IconButton aria-label="share">
             <ShareIcon />
-          </IconButton>
+          </IconButton> */}
           <IconButton
             className={clsx(classes.expand, {
               [classes.expandOpen]: expanded,
@@ -102,7 +82,8 @@ const BlogForm = () => {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            <Typography paragraph>Method:</Typography>
+            {/* Place content here */}
+            <Typography paragraph>Place Content Here</Typography>
           </CardContent>
         </Collapse>
       </Card>

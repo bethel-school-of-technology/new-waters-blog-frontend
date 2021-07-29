@@ -23,8 +23,8 @@ const PaperBox = styled(MuiPaper)`
 const Paper = styled(MuiPaper)`
   display: flex  
   padding: 1rem 3rem;
-  max-width: 81rem;
-  // min-width: 81rem;
+  max-width: 85rem;
+  // min-width: 85rem;
   `;
 
 const Row = styled.div`

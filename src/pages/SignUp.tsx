@@ -35,7 +35,8 @@ const PaperBox = styled(MuiPaper)`
 const Paper = styled(MuiPaper)`
   display: flex  
   padding: 1rem 3rem;
-  max-width: 81rem;
+  max-width: 85rem;
+  // min-width: 85rem;
   `;
 
 const Row = styled.div`
@@ -43,7 +44,7 @@ const Row = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 3rem;
+  padding: 2rem;
 `;
 
 const Item = styled(MuiPaper)`
@@ -132,40 +133,11 @@ const SignUp: React.FunctionComponent = () => {
 
   return (
     <>
-      {/* <div>Sign Up Page</div>
-      <div>TEMPORARY DEV LINKS</div>
-      <ul>
-        <li>
-          <Link to="/auth/sign-up">Sign Up</Link>
-        </li>
-        <li>
-          <Link to="/auth/sign-in">Sign In</Link>
-        </li>
-        <li>
-          <Link to="/home">Home</Link>
-        </li>
-        <li>
-          <Link to="/blog">User Blog</Link>
-        </li>
-        <li>
-          <Link to="/user">User</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul> */}
       <Box>
         <PaperBox>
+          <Typography variant="h5">Register</Typography>
           <Paper>
             <Row>
-              <ul>
-                <li>
-                  <div>Sign Up Page</div>
-                </li>
-                <li>
-                  <Link to="/home">Home</Link>
-                </li>
-              </ul>
               <div className={classes.root}>
                 <Formik
                   initialValues={{
@@ -321,7 +293,11 @@ const SignUp: React.FunctionComponent = () => {
                               disabled={isSubmitting}
                             >
                               Register
+                              {/* <Link to="/auth/sign-in">Register</Link> */}
                             </Button>
+                            <Link to="/auth/sign-in">
+                              Return to Sign In page
+                            </Link>
                             {displayFormStatus && (
                               <div className="formStatus">
                                 {formStatus.type === "error" ? (
