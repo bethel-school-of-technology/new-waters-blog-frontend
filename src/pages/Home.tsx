@@ -26,18 +26,21 @@ const PaperBox = styled(MuiPaper)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
+  margin: 1rem;
 `;
 
 const Paper = styled(MuiPaper)`
   display: flex  
   padding: 1rem 3rem;
-`;
+  max-width: 81rem;
+  // min-width: 81rem;
+  `;
 
 const Row = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const Item = styled(MuiPaper)`
@@ -48,32 +51,35 @@ const Item = styled(MuiPaper)`
 const Home = () => {
   return (
     <>
-      <div>Home Page</div>
-      <div>TEMPORARY DEV LINKS</div>
-      <ul>
-        <li>
-          <Link to="/auth/sign-up">Sign Up</Link>
-        </li>
-        <li>
-          <Link to="/auth/sign-in">Sign In</Link>
-        </li>
-        <li>
-          <Link to="/home">Home</Link>
-        </li>
-        <li>
-          <Link to="/blog">User Blog</Link>
-        </li>
-        <li>
-          <Link to="/user">User</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
       <Box>
         <PaperBox>
           <Paper>
             <Row>
+              <div>
+                <Item elevation={3}>
+                  <BlogForm />
+                </Item>
+              </div>
+              <div>
+                <Item elevation={3}>
+                  <BlogForm />
+                </Item>
+              </div>
+              <div>
+                <Item elevation={3}>
+                  <BlogForm />
+                </Item>
+              </div>
+              <div>
+                <Item elevation={3}>
+                  <BlogForm />
+                </Item>
+              </div>
+              <div>
+                <Item elevation={3}>
+                  <BlogForm />
+                </Item>
+              </div>
               <div>
                 <Item elevation={3}>
                   <BlogForm />
