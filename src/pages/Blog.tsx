@@ -4,21 +4,10 @@ import styled from "styled-components";
 import { Box as MuiBox, Paper as MuiPaper } from "@material-ui/core";
 import BlogForm from "../components/BlogForm";
 
-const SpacingDiv = styled.div`
-  padding: 0.5rem;
-`;
-
 const Box = styled(MuiBox)`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const PaperBox = styled(MuiPaper)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1rem;
 `;
 
 const Paper = styled(MuiPaper)`
@@ -51,21 +40,6 @@ const Blog = () => {
         {/* <PaperBox> */}
         <Paper>
           <Row>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
-            <div>
-              <Item elevation={3}>
-                <BlogForm />
-              </Item>
-            </div>
             <div>
               <Item elevation={3}>
                 <BlogForm />
