@@ -1,21 +1,25 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import {
+  Typography,
+  makeStyles,
+  Theme,
+  IconButton,
+  Collapse,
+  CardActions,
+  CardContent,
+  CardMedia,
+  CardHeader,
+  Card,
+} from "@material-ui/core/";
+import FavoriteIcon from "@material-ui/icons/";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { Link } from "react-router-dom";
+import MultilineTextFields from "./MultiLineTextField";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     minWidth: 616,
     maxWidth: 225,
@@ -56,7 +60,13 @@ const BlogForm = () => {
           title="Title of post here"
           // subheader="BLAAAAAAA"
         />
-        <CardMedia className={classes.media} image="https://static-cse.canva.com/blob/130199/17.b1ccd4a6.png" title="Image / media">Place Media Here</CardMedia>
+        <CardMedia
+          className={classes.media}
+          image="https://static-cse.canva.com/blob/130199/17.b1ccd4a6.png"
+          title="Image / media"
+        >
+          Place Media Here
+        </CardMedia>
         {/* <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             NERRRRRRR
@@ -83,7 +93,8 @@ const BlogForm = () => {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             {/* Place content here */}
-            <Typography paragraph>Place Content Here</Typography>
+            <MultilineTextFields />
+            {/* <Typography paragraph>Place Content Here</Typography> */}
           </CardContent>
         </Collapse>
       </Card>

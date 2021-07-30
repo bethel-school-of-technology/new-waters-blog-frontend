@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import { Box, Paper as MuiPaper } from "@material-ui/core";
+import { Box, Button, Paper as MuiPaper } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import Fab from "@material-ui/core/Fab";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
@@ -17,6 +17,12 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
+`;
+
+const RowToolbar = styled(Toolbar)`
+  display: flex;
+  // flex-direction: row;
+  justify-content: space-between;
 `;
 
 interface Props {
@@ -65,17 +71,21 @@ function Home(props: Props) {
     <React.Fragment>
       <CssBaseline />
       <AppBar>
-        <Toolbar>
-          <Column>
-            <Typography variant="h4">New Waters Blog</Typography>
-            <Typography variant="h6">
-              New's that brings life in the midst of chaos
-            </Typography>
-          </Column>
-        </Toolbar>
+        <RowToolbar>
+          {/* <Row> */}
+            <Column>
+              <Typography variant="h4">New Waters Blog</Typography>
+              <Typography variant="h6">
+                New's that brings life in the midst of chaos
+              </Typography>
+            </Column>
+            <div>
+              <Button variant="contained">Logout</Button>
+            </div>
+          {/* </Row> */}
+        </RowToolbar>
       </AppBar>
-      <Toolbar id="back-to-top-anchor" />
-      
+      <Toolbar id="return-to-top" />
       <Blog />
       <ScrollTop {...props}>
         <Fab color="secondary" size="small" aria-label="scroll back to top">
