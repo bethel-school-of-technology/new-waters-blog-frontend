@@ -8,6 +8,7 @@ const Box = styled(MuiBox)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3rem;
 `;
 
 const Paper = styled(MuiPaper)`

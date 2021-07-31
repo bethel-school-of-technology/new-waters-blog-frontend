@@ -1,7 +1,6 @@
 import React from "react";
 import clsx from "clsx";
 import {
-  Typography,
   makeStyles,
   Theme,
   IconButton,
@@ -12,11 +11,8 @@ import {
   CardHeader,
   Card,
 } from "@material-ui/core/";
-import FavoriteIcon from "@material-ui/icons/";
-import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { Link } from "react-router-dom";
 import MultilineTextFields from "./MultiLineTextField";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -58,7 +54,6 @@ const BlogForm = () => {
             </IconButton>
           }
           title="Title of post here"
-          // subheader="BLAAAAAAA"
         />
         <CardMedia
           className={classes.media}
@@ -67,18 +62,7 @@ const BlogForm = () => {
         >
           Place Media Here
         </CardMedia>
-        {/* <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            NERRRRRRR
-          </Typography>
-        </CardContent> */}
         <CardActions disableSpacing>
-          {/* <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton> */}
-          {/* <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton> */}
           <IconButton
             className={clsx(classes.expand, {
               [classes.expandOpen]: expanded,
@@ -94,7 +78,6 @@ const BlogForm = () => {
           <CardContent>
             {/* Place content here */}
             <MultilineTextFields />
-            {/* <Typography paragraph>Place Content Here</Typography> */}
           </CardContent>
         </Collapse>
       </Card>

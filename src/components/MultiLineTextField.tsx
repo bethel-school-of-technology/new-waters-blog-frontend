@@ -1,7 +1,6 @@
 import React from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -14,10 +13,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
-
-const CircleText = styled(TextField)`
-  border-radius: 0;
-`;
 
 export default function MultilineTextFields() {
   const classes = useStyles();
@@ -53,11 +48,11 @@ export default function MultilineTextFields() {
           variant="outlined"
         />
         <Button
-          color="secondary"
+          color="primary"
           variant="contained"
           style={{ margin: "0.6rem" }}
         >
-          Hello
+         Submit
         </Button>
       </form>
     </>
