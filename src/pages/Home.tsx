@@ -1,159 +1,99 @@
 import React from "react";
-import {
-  TextareaAutosize,
-  TextField,
-  Typography,
-  Box as MuiBox,
-  Paper as MuiPaper,
-  Grid,
-} from "@material-ui/core";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import useScrollTrigger from "@material-ui/core/useScrollTrigger";
+import { Box, Button, Paper as MuiPaper } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
+import Fab from "@material-ui/core/Fab";
+import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import Zoom from "@material-ui/core/Zoom";
 import styled from "styled-components";
-import BlogForm from "../components/BlogForm";
-import "../images/styles.css";
-import { Link } from "react-router-dom";
+import Blog from "./Blog";
 
-const SpacingDiv = styled.div`
-  padding: 0.5rem;
-`;
-
-const Box = styled(MuiBox)`
+const Column = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 1rem;
 `;
 
-const PaperBox = styled(MuiPaper)`
+const RowToolbar = styled(Toolbar)`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1rem;
+  // flex-direction: row;
+  justify-content: space-between;
 `;
 
-const Paper = styled(MuiPaper)`
-  display: flex  
-  padding: 1rem 3rem;
-`;
+interface Props {
+  children: React.ReactElement;
+}
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`;
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      position: "fixed",
+      bottom: theme.spacing(2),
+      right: theme.spacing(2),
+    },
+  })
+);
 
-const Item = styled(MuiPaper)`
-  display: flex;
-  margin: 1rem;
-`;
+function ScrollTop(props: Props) {
+  const { children } = props;
+  const classes = useStyles();
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 100,
+  });
 
-const Home = () => {
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const anchor = (
+      (event.target as HTMLDivElement).ownerDocument || document
+    ).querySelector("#back-to-top-anchor");
+
+    if (anchor) {
+      anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
   return (
-    <>
-      <div>Home Page</div>
-      <div>TEMPORARY DEV LINKS</div>
-      <ul>
-        <li>
-          <Link to="/auth/sign-up">Sign Up</Link>
-        </li>
-        <li>
-          <Link to="/auth/sign-in">Sign In</Link>
-        </li>
-        <li>
-          <Link to="/home">Home</Link>
-        </li>
-        <li>
-          <Link to="/blog">User Blog</Link>
-        </li>
-        <li>
-          <Link to="/user">User</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
-      <Box>
-        <PaperBox>
-          <Paper>
-            <Row>
-              <div>
-                <Item elevation={3}>
-                  <BlogForm />
-                </Item>
-              </div>
-              <div>
-                <Item elevation={3}>
-                  <BlogForm />
-                </Item>
-              </div>
-              <div>
-                <Item elevation={3}>
-                  <BlogForm />
-                </Item>
-              </div>
-              <div>
-                <Item elevation={3}>
-                  <BlogForm />
-                </Item>
-              </div>
-              <div>
-                <Item elevation={3}>
-                  <BlogForm />
-                </Item>
-              </div>
-            </Row>
-          </Paper>
-        </PaperBox>
-      </Box>
-    </>
+    <Zoom in={trigger}>
+      <div onClick={handleClick} role="presentation" className={classes.root}>
+        {children}
+      </div>
+    </Zoom>
   );
-};
+}
+
+function Home(props: Props) {
+  return (
+    <React.Fragment>
+      <CssBaseline />
+      <AppBar>
+        <RowToolbar>
+          {/* <Row> */}
+            <Column>
+              <Typography variant="h4">New Waters Blog</Typography>
+              <Typography variant="h6">
+                New's that brings life in the midst of chaos
+              </Typography>
+            </Column>
+            <div>
+              <Button variant="contained">Logout</Button>
+            </div>
+          {/* </Row> */}
+        </RowToolbar>
+      </AppBar>
+      <Toolbar id="return-to-top" />
+      <Blog />
+      <ScrollTop {...props}>
+        <Fab color="secondary" size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
+    </React.Fragment>
+  );
+}
 
 export default Home;
-
-{
-  /* <TextField
-          id="paragraph-box"
-          label="What is Happening"
-          multiline
-          rows={5}
-          variant="outlined"
-        /> */
-}
-{
-  /* <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <Paper>xs=12</Paper>
-              </Grid>
-              <Grid item xs={6}>
-                <Paper>xs=6</Paper>
-              </Grid>
-              <Grid item xs={6}>
-                <Paper>xs=6</Paper>
-              </Grid>
-              <Grid item xs={3}>
-                <Paper>xs=3</Paper>
-              </Grid>
-              <Grid item xs={3}>
-                <Paper>xs=3</Paper>
-              </Grid>
-              <Grid item xs={3}>
-                <Paper>xs=3</Paper>
-              </Grid>
-              <Grid item xs={3}>
-                <Paper>xs=3</Paper>
-              </Grid>
-            </Grid> */
-}
-{
-  /* <Item elevation={3}>
-              <RecipeReviewCard />
-            </Item>
-            <Item elevation={3}>
-              <RecipeReviewCard />
-            </Item>
-            <Item elevation={3}>
-              <RecipeReviewCard />
-            </Item>
-            <Item elevation={3}>
-              <RecipeReviewCard />
-            </Item> */
-}

@@ -6,12 +6,51 @@ import {
   makeStyles,
   createStyles,
   Theme,
+  Box as MuiBox,
+  Paper as MuiPaper,
   Typography,
 } from "@material-ui/core";
 import { Formik, Form, FormikProps } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
+const SpacingDiv = styled.div`
+  padding: 0.5rem;
+`;
+
+const Box = styled(MuiBox)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const PaperBox = styled(MuiPaper)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+`;
+
+const Paper = styled(MuiPaper)`
+  display: flex  
+  padding: 1rem 3rem;
+  max-width: 85rem;
+  // min-width: 85rem;
+  `;
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem;
+`;
+
+const Item = styled(MuiPaper)`
+  display: flex;
+  margin: 1rem;
+`;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -94,192 +133,195 @@ const SignUp: React.FunctionComponent = () => {
 
   return (
     <>
-      <div>Sign Up Page</div>
-      <div>TEMPORARY DEV LINKS</div>
-      <ul>
-        <li>
-          <Link to="/auth/sign-up">Sign Up</Link>
-        </li>
-        <li>
-          <Link to="/auth/sign-in">Sign In</Link>
-        </li>
-        <li>
-          <Link to="/home">Home</Link>
-        </li>
-        <li>
-          <Link to="/blog">User Blog</Link>
-        </li>
-        <li>
-          <Link to="/user">User</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-      </ul>
-      <div className={classes.root}>
-        <Formik
-          initialValues={{
-            fullName: "",
-            email: "",
-            password: "",
-            confirmPassword: "",
-          }}
-          onSubmit={(values: ISignUpForm, actions) => {
-            createNewUser(values, actions.resetForm);
-            setTimeout(() => {
-              actions.setSubmitting(false);
-            }, 500);
-          }}
-          validationSchema={Yup.object().shape({
-            email: Yup.string().email().required("Enter a valid email"),
-            fullName: Yup.string(),
-            password: Yup.string()
-              .matches(
-                /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,20}\S$/
-              )
-              .required(
-                "Password must contain at least one uppercase, one lowercase, one special character and no spaces"
-              ),
-            confirmPassword: Yup.string()
-              .required("Required")
-              .test("password-match", "Password must match", function (value) {
-                return this.parent.password === value;
-              }),
-          })}
-        >
-          {(props: FormikProps<ISignUpForm>) => {
-            const {
-              values,
-              touched,
-              errors,
-              handleBlur,
-              handleChange,
-              isSubmitting,
-            } = props;
-            return (
-              <Form>
-                {/* <Typography variant="h4" className={classes.title}>
+      <Box>
+        <PaperBox>
+          <Typography variant="h5">Register</Typography>
+          <Paper>
+            <Row>
+              <div className={classes.root}>
+                <Formik
+                  initialValues={{
+                    fullName: "",
+                    email: "",
+                    password: "",
+                    confirmPassword: "",
+                  }}
+                  onSubmit={(values: ISignUpForm, actions) => {
+                    createNewUser(values, actions.resetForm);
+                    setTimeout(() => {
+                      actions.setSubmitting(false);
+                    }, 500);
+                  }}
+                  validationSchema={Yup.object().shape({
+                    email: Yup.string().email().required("Enter a valid email"),
+                    fullName: Yup.string(),
+                    password: Yup.string()
+                      .matches(
+                        /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,20}\S$/
+                      )
+                      .required(
+                        "Password must contain at least one uppercase, one lowercase, one special character and no spaces"
+                      ),
+                    confirmPassword: Yup.string()
+                      .required("Required")
+                      .test(
+                        "password-match",
+                        "Password must match",
+                        function (value) {
+                          return this.parent.password === value;
+                        }
+                      ),
+                  })}
+                >
+                  {(props: FormikProps<ISignUpForm>) => {
+                    const {
+                      values,
+                      touched,
+                      errors,
+                      handleBlur,
+                      handleChange,
+                      isSubmitting,
+                    } = props;
+                    return (
+                      <Form>
+                        {/* <Typography variant="h4" className={classes.title}>
                 Sign up
               </Typography>
               <Typography variant="h5">New Waters</Typography> */}
-                <Grid container justify="space-around">
-                  <Grid item className={classes.textField}>
-                    {/* Full Name */}
-                    <Grid item className={classes.textField}>
-                      <TextField
-                        name="fullName"
-                        id="fullName"
-                        label="Full Name"
-                        value={values.fullName}
-                        type="text"
-                        variant="outlined"
-                        helperText={
-                          errors.fullName && touched.fullName
-                            ? errors.fullName
-                            : "Enter your full name."
-                        }
-                        error={
-                          errors.fullName && touched.fullName ? true : false
-                        }
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </Grid>
+                        <Grid container justify="space-around">
+                          <Grid item className={classes.textField}>
+                            {/* Full Name */}
+                            <Grid item className={classes.textField}>
+                              <TextField
+                                name="fullName"
+                                id="fullName"
+                                label="Full Name"
+                                value={values.fullName}
+                                type="text"
+                                variant="outlined"
+                                helperText={
+                                  errors.fullName && touched.fullName
+                                    ? errors.fullName
+                                    : "Enter your full name."
+                                }
+                                error={
+                                  errors.fullName && touched.fullName
+                                    ? true
+                                    : false
+                                }
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </Grid>
 
-                    {/* Email */}
-                    <Grid item className={classes.textField}>
-                      <TextField
-                        name="email"
-                        id="email"
-                        label="Email"
-                        value={values.email}
-                        type="email"
-                        variant="outlined"
-                        helperText={
-                          errors.email && touched.email
-                            ? errors.email
-                            : "Enter email"
-                        }
-                        error={errors.email && touched.email ? true : false}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </Grid>
+                            {/* Email */}
+                            <Grid item className={classes.textField}>
+                              <TextField
+                                name="email"
+                                id="email"
+                                label="Email"
+                                value={values.email}
+                                type="email"
+                                variant="outlined"
+                                helperText={
+                                  errors.email && touched.email
+                                    ? errors.email
+                                    : "Enter email"
+                                }
+                                error={
+                                  errors.email && touched.email ? true : false
+                                }
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </Grid>
 
-                    {/* Password */}
-                    <Grid item className={classes.submitButton}>
-                      <TextField
-                        name="password"
-                        id="password"
-                        label="Password"
-                        value={values.password}
-                        type="password"
-                        variant="outlined"
-                        helperText={
-                          errors.password && touched.password
-                            ? "Password must contain at least one uppercase, one lowercase, one special character and no spaces"
-                            : "Enter Password"
-                        }
-                        error={
-                          errors.password && touched.password ? true : false
-                        }
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </Grid>
+                            {/* Password */}
+                            <Grid item className={classes.submitButton}>
+                              <TextField
+                                name="password"
+                                id="password"
+                                label="Password"
+                                value={values.password}
+                                type="password"
+                                variant="outlined"
+                                helperText={
+                                  errors.password && touched.password
+                                    ? "Password must contain at least one uppercase, one lowercase, one special character and no spaces"
+                                    : "Enter Password"
+                                }
+                                error={
+                                  errors.password && touched.password
+                                    ? true
+                                    : false
+                                }
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </Grid>
 
-                    {/* Confirm Password */}
-                    <Grid item className={classes.textField}>
-                      <TextField
-                        name="confirmPassword"
-                        id="confirmPassword"
-                        label="Confirm password"
-                        value={values.confirmPassword}
-                        type="password"
-                        variant="outlined"
-                        helperText={
-                          errors.confirmPassword && touched.confirmPassword
-                            ? errors.confirmPassword
-                            : "Re-enter password to confirm"
-                        }
-                        error={
-                          errors.confirmPassword && touched.confirmPassword
-                            ? true
-                            : false
-                        }
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                    </Grid>
+                            {/* Confirm Password */}
+                            <Grid item className={classes.textField}>
+                              <TextField
+                                name="confirmPassword"
+                                id="confirmPassword"
+                                label="Confirm password"
+                                value={values.confirmPassword}
+                                type="password"
+                                variant="outlined"
+                                helperText={
+                                  errors.confirmPassword &&
+                                  touched.confirmPassword
+                                    ? errors.confirmPassword
+                                    : "Re-enter password to confirm"
+                                }
+                                error={
+                                  errors.confirmPassword &&
+                                  touched.confirmPassword
+                                    ? true
+                                    : false
+                                }
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                              />
+                            </Grid>
 
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      color="secondary"
-                      disabled={isSubmitting}
-                    >
-                      Register
-                    </Button>
-                    {displayFormStatus && (
-                      <div className="formStatus">
-                        {formStatus.type === "error" ? (
-                          <p className={classes.errorMessage}>
-                            {formStatus.message}
-                          </p>
-                        ) : formStatus.type === "success" ? (
-                          <p className={classes.successMessage}>
-                            {formStatus.message}
-                          </p>
-                        ) : null}
-                      </div>
-                    )}
-                  </Grid>
-                </Grid>
-              </Form>
-            );
-          }}
-        </Formik>
-      </div>
+                            <Button
+                              type="submit"
+                              variant="contained"
+                              color="secondary"
+                              disabled={isSubmitting}
+                            >
+                              Register
+                              {/* <Link to="/auth/sign-in">Register</Link> */}
+                            </Button>
+                            <Link to="/auth/sign-in">
+                              Return to Sign In page
+                            </Link>
+                            {displayFormStatus && (
+                              <div className="formStatus">
+                                {formStatus.type === "error" ? (
+                                  <p className={classes.errorMessage}>
+                                    {formStatus.message}
+                                  </p>
+                                ) : formStatus.type === "success" ? (
+                                  <p className={classes.successMessage}>
+                                    {formStatus.message}
+                                  </p>
+                                ) : null}
+                              </div>
+                            )}
+                          </Grid>
+                        </Grid>
+                      </Form>
+                    );
+                  }}
+                </Formik>
+              </div>
+            </Row>
+          </Paper>
+        </PaperBox>
+      </Box>
     </>
   );
 };
