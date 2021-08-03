@@ -10,7 +10,7 @@ import Fab from "@material-ui/core/Fab";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import Zoom from "@material-ui/core/Zoom";
 import styled from "styled-components";
-import Blog from "./Blog";
+import Blog from "../components/Blog";
 
 const Column = styled.div`
   display: flex;

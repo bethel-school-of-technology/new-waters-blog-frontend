@@ -9,12 +9,14 @@ import {
   CardContent,
   CardMedia,
   CardHeader,
-  Card,
+  Card as MuiCard,
   TextField,
+  Typography,
 } from "@material-ui/core/";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
-import MultilineTextFields from "./MultiLineTextField";
+import BlogTextFields from "./BlogTextFields";
+import styled from "styled-components";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
@@ -37,6 +39,18 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
+const Card = styled(MuiCard)`
+  padding: 1rem;
+`;
+
+const TitleRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem 0.25rem 0;
+`;
+
 const BlogForm = () => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -48,23 +62,23 @@ const BlogForm = () => {
   return (
     <>
       <Card className={classes.root}>
-        <CardHeader
+        {/* <CardHeader
           action={
             <IconButton aria-label="settings">
               <MoreVertIcon />
             </IconButton>
           }
           title="Title of post here"
-        >
+        ></CardHeader> */}
+        <TitleRow>
           <TextField id="blog-title" label="Title" variant="outlined" />
-        </CardHeader>
+          <Typography variant="h4">Micheal Skinner</Typography>
+        </TitleRow>
         <CardMedia
           className={classes.media}
-          image="https://static-cse.canva.com/blob/130199/17.b1ccd4a6.png"
+          // image="https://static-cse.canva.com/blob/130199/17.b1ccd4a6.png"
           title="Image / media"
-        >
-          Place Media Here
-        </CardMedia>
+        ></CardMedia>
         <CardActions disableSpacing>
           <IconButton
             className={clsx(classes.expand, {
@@ -79,8 +93,7 @@ const BlogForm = () => {
         </CardActions>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
-            {/* Place content here */}
-            <MultilineTextFields />
+            <BlogTextFields />
           </CardContent>
         </Collapse>
       </Card>

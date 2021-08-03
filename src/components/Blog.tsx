@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Box as MuiBox, Paper as MuiPaper } from "@material-ui/core";
-import BlogForm from "../components/BlogForm";
+import BlogForm from "./BlogForm";
 
 const Box = styled(MuiBox)`
   display: flex;

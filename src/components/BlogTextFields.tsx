@@ -8,13 +8,13 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       "& .MuiTextField-root": {
         margin: theme.spacing(1),
-        width: "73ch",
+        width: "69ch",
       },
     },
   })
 );
 
-export default function MultilineTextFields() {
+const BlogTextFields = () => {
   const classes = useStyles();
   // const [value, setValue] = React.useState("Controlled");
 
@@ -52,9 +52,11 @@ export default function MultilineTextFields() {
           variant="contained"
           style={{ margin: "0.6rem" }}
         >
-         Submit
+          Submit
         </Button>
       </form>
     </>
   );
-}
+};
+
+export default BlogTextFields;
