@@ -62,12 +62,9 @@ const Routes = () => (
       </Route>
       <Route exact path="/auth/sign-up"></Route>
       <Route exact path="/home"></Route>
-      <Route exact path="/about"></Route>
       <Route exact path="/blog"></Route>
-      <Route exact path="/user"></Route>
     </Switch>
   </Router>
-  // <div></div>
 );
 
 export default Routes;

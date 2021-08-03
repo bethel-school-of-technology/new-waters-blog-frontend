@@ -15,10 +15,6 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const SpacingDiv = styled.div`
-  padding: 0.5rem;
-`;
-
 const Box = styled(MuiBox)`
   display: flex;
   flex-direction: column;
@@ -47,11 +43,6 @@ const Row = styled.div`
   padding: 2rem;
 `;
 
-const Item = styled(MuiPaper)`
-  display: flex;
-  margin: 1rem;
-`;
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -73,29 +64,26 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface ISignInForm {
+interface SignInForm {
   email: string;
   password: string;
 }
 
-interface IFormStatus {
+interface FormStatus {
   message: string;
   type: string;
 }
 
-interface IFormStatusProps {
-  [key: string]: IFormStatus;
+interface FormStatusProps {
+  [key: string]: FormStatus;
 }
 
-const formStatusProps: IFormStatusProps = {
+const formStatusProps: FormStatusProps = {
   success: {
     message: "Signed in successfully.",
     type: "success",
   },
-  // duplicate: {
-  //   message: "Email already exist. Please use different email.",
-  //   type: "error",
-  // },
+
   error: {
     message: "Something went wrong. Please try again.",
     type: "error",
@@ -105,12 +93,12 @@ const formStatusProps: IFormStatusProps = {
 const SignIn: React.FunctionComponent = () => {
   const classes = useStyles();
   const [displayFormStatus, setDisplayFormStatus] = useState(false);
-  const [formStatus, setFormStatus] = useState<IFormStatus>({
+  const [formStatus, setFormStatus] = useState<FormStatus>({
     message: "",
     type: "",
   });
 
-  const signInUser = async (data: ISignInForm, resetForm: Function) => {
+  const signInUser = async (data: SignInForm, resetForm: Function) => {
     try {
       // API call integration will be here. Handle success and error response accordingly.
       if (data) {
@@ -144,7 +132,7 @@ const SignIn: React.FunctionComponent = () => {
                     email: "",
                     password: "",
                   }}
-                  onSubmit={(values: ISignInForm, actions) => {
+                  onSubmit={(values: SignInForm, actions) => {
                     signInUser(values, actions.resetForm);
                     setTimeout(() => {
                       actions.setSubmitting(false);
@@ -159,7 +147,7 @@ const SignIn: React.FunctionComponent = () => {
                       .required("Enter correct password"),
                   })}
                 >
-                  {(props: FormikProps<ISignInForm>) => {
+                  {(props: FormikProps<SignInForm>) => {
                     const {
                       values,
                       touched,

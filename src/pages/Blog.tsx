@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box as MuiBox, Paper as MuiPaper } from "@material-ui/core";
 import BlogForm from "../components/BlogForm";
@@ -38,7 +37,6 @@ const Blog = () => {
   return (
     <>
       <Box>
-        {/* <PaperBox> */}
         <Paper>
           <Row>
             <div>
@@ -48,7 +46,6 @@ const Blog = () => {
             </div>
           </Row>
         </Paper>
-        {/* </PaperBox> */}
       </Box>
     </>
   );

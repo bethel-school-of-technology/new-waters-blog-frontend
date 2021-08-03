@@ -1,9 +1,7 @@
-import React from "react";
+// import React from "react";
 import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
 import Home from "../pages/Home";
-// import About from "../pages/About";
-import User from "../pages/User";
 import Blog from "../pages/Blog";
 
 const homeRoute = {
@@ -14,24 +12,6 @@ const homeRoute = {
   icon: null,
   guard: null,
   component: Home,
-};
-
-// const aboutRoute = {
-//   id: "About",
-//   path: "/about",
-//   children: null,
-//   component: About,
-//   icon: null,
-//   guard: null,
-// };
-
-const userRoute = {
-  id: "User",
-  path: "/user",
-  children: null,
-  component: User,
-  icon: null,
-  guard: null,
 };
 
 const blogRoute = {
@@ -64,9 +44,4 @@ const authRoutes = {
 
 export const authLayoutRoutes = [authRoutes];
 
-export const pageRoutes = [
-  homeRoute,
-  // aboutRoute,
-  userRoute,
-  blogRoute,
-];
+export const pageRoutes = [homeRoute, blogRoute];

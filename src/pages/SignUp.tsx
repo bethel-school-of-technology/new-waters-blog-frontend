@@ -15,10 +15,6 @@ import * as Yup from "yup";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const SpacingDiv = styled.div`
-  padding: 0.5rem;
-`;
-
 const Box = styled(MuiBox)`
   display: flex;
   flex-direction: column;
@@ -47,11 +43,6 @@ const Row = styled.div`
   padding: 2rem;
 `;
 
-const Item = styled(MuiPaper)`
-  display: flex;
-  margin: 1rem;
-`;
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -73,23 +64,23 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-interface ISignUpForm {
+interface SignUpForm {
   fullName: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
-interface IFormStatus {
+interface FormStatus {
   message: string;
   type: string;
 }
 
-interface IFormStatusProps {
-  [key: string]: IFormStatus;
+interface FormStatusProps {
+  [key: string]: FormStatus;
 }
 
-const formStatusProps: IFormStatusProps = {
+const formStatusProps: FormStatusProps = {
   success: {
     message: "Signed up successfully.",
     type: "success",
@@ -107,12 +98,12 @@ const formStatusProps: IFormStatusProps = {
 const SignUp: React.FunctionComponent = () => {
   const classes = useStyles();
   const [displayFormStatus, setDisplayFormStatus] = useState(false);
-  const [formStatus, setFormStatus] = useState<IFormStatus>({
+  const [formStatus, setFormStatus] = useState<FormStatus>({
     message: "",
     type: "",
   });
 
-  const createNewUser = async (data: ISignUpForm, resetForm: Function) => {
+  const createNewUser = async (data: SignUpForm, resetForm: Function) => {
     try {
       // API call integration will be here. Handle success and error response accordingly.
       if (data) {
@@ -146,7 +137,7 @@ const SignUp: React.FunctionComponent = () => {
                     password: "",
                     confirmPassword: "",
                   }}
-                  onSubmit={(values: ISignUpForm, actions) => {
+                  onSubmit={(values: SignUpForm, actions) => {
                     createNewUser(values, actions.resetForm);
                     setTimeout(() => {
                       actions.setSubmitting(false);
@@ -173,7 +164,7 @@ const SignUp: React.FunctionComponent = () => {
                       ),
                   })}
                 >
-                  {(props: FormikProps<ISignUpForm>) => {
+                  {(props: FormikProps<SignUpForm>) => {
                     const {
                       values,
                       touched,
@@ -184,10 +175,6 @@ const SignUp: React.FunctionComponent = () => {
                     } = props;
                     return (
                       <Form>
-                        {/* <Typography variant="h4" className={classes.title}>
-                Sign up
-              </Typography>
-              <Typography variant="h5">New Waters</Typography> */}
                         <Grid container justify="space-around">
                           <Grid item className={classes.textField}>
                             {/* Full Name */}
@@ -293,7 +280,6 @@ const SignUp: React.FunctionComponent = () => {
                               disabled={isSubmitting}
                             >
                               Register
-                              {/* <Link to="/auth/sign-in">Register</Link> */}
                             </Button>
                             <Link to="/auth/sign-in">
                               Return to Sign In page

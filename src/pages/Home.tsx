@@ -5,8 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import { Box, Button, Paper as MuiPaper } from "@material-ui/core";
-import Container from "@material-ui/core/Container";
+import { Button } from "@material-ui/core";
 import Fab from "@material-ui/core/Fab";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import Zoom from "@material-ui/core/Zoom";
@@ -72,7 +71,6 @@ function Home(props: Props) {
       <CssBaseline />
       <AppBar>
         <RowToolbar>
-          {/* <Row> */}
             <Column>
               <Typography variant="h4">New Waters Blog</Typography>
               <Typography variant="h6">
@@ -82,7 +80,6 @@ function Home(props: Props) {
             <div>
               <Button variant="contained">Logout</Button>
             </div>
-          {/* </Row> */}
         </RowToolbar>
       </AppBar>
       <Toolbar id="return-to-top" />

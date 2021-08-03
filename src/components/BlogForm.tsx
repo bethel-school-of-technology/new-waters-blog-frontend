@@ -10,6 +10,7 @@ import {
   CardMedia,
   CardHeader,
   Card,
+  TextField,
 } from "@material-ui/core/";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
@@ -54,7 +55,9 @@ const BlogForm = () => {
             </IconButton>
           }
           title="Title of post here"
-        />
+        >
+          <TextField id="blog-title" label="Title" variant="outlined" />
+        </CardHeader>
         <CardMedia
           className={classes.media}
           image="https://static-cse.canva.com/blob/130199/17.b1ccd4a6.png"
