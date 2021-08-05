@@ -11,6 +11,7 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import Zoom from "@material-ui/core/Zoom";
 import styled from "styled-components";
 import Blog from "../components/Blog";
+import { Link } from "react-router-dom";
 
 const Column = styled.div`
   display: flex;
@@ -71,15 +72,23 @@ function Home(props: Props) {
       <CssBaseline />
       <AppBar>
         <RowToolbar>
-            <Column>
-              <Typography variant="h4">New Waters Blog</Typography>
-              <Typography variant="h6">
-                New's that brings life in the midst of chaos
-              </Typography>
-            </Column>
-            <div>
-              <Button variant="contained">Logout</Button>
-            </div>
+          <Column>
+            <Typography variant="h4">New Waters Blog</Typography>
+            <Typography variant="h6">
+              New's that brings life in the midst of chaos
+            </Typography>
+          </Column>
+          <div>
+            <Button
+              component={Link}
+              // className="Logout"
+              variant="contained"
+              to="/"
+            >
+              Logout
+            </Button>
+            {/* <Button component={Link} onClick={to} variant="contained">Logout</Button> */}
+          </div>
         </RowToolbar>
       </AppBar>
       <Toolbar id="return-to-top" />
