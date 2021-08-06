@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -11,7 +11,6 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import Zoom from "@material-ui/core/Zoom";
 import styled from "styled-components";
 import Blog from "../components/Blog";
-import { Link } from "react-router-dom";
 
 const Column = styled.div`
   display: flex;
@@ -39,6 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+// SCROLL-TOP FUNCTIONALITY
 function ScrollTop(props: Props) {
   const { children } = props;
   const classes = useStyles();
@@ -66,33 +66,45 @@ function ScrollTop(props: Props) {
   );
 }
 
+// LOGOUT BUTTON
+class UserLogout extends Component {
+  logout = () => {
+    localStorage.clear();
+    // you can also like localStorage.removeItem('Token');
+    window.location.href = "/";
+  };
+
+  render() {
+    return (
+      <Button onClick={this.logout} variant="contained">
+        Logout
+      </Button>
+    );
+  }
+}
+
+// TOP APP BAR
 function Home(props: Props) {
   return (
     <React.Fragment>
       <CssBaseline />
       <AppBar>
         <RowToolbar>
+          {/* TITLE */}
           <Column>
             <Typography variant="h4">New Waters Blog</Typography>
             <Typography variant="h6">
               New's that brings life in the midst of chaos
             </Typography>
           </Column>
-          <div>
-            <Button
-              component={Link}
-              // className="Logout"
-              variant="contained"
-              to="/"
-            >
-              Logout
-            </Button>
-            {/* <Button component={Link} onClick={to} variant="contained">Logout</Button> */}
-          </div>
+          {/* LOGOUT BUTTON */}
+          <UserLogout />
         </RowToolbar>
       </AppBar>
       <Toolbar id="return-to-top" />
+      {/* BLOG */}
       <Blog />
+      {/* SCROLL-TOP FUNCTIONALITY */}
       <ScrollTop {...props}>
         <Fab color="secondary" size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />

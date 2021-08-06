@@ -59,17 +59,15 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  // align-items: center;
-  padding: 0 1rem 0.25rem 0;
+  padding: 0 1rem 0.25rem 0rem;
 `;
 
 const TitleRow = styled.div`
   display: flex;
   flex-direction: row;
-  // justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
-  // padding: 0 1rem 0.25rem 0;
-`;
+  `;
 
 const BlogForm = () => {
   const classes = useStylesCard();
@@ -92,6 +90,9 @@ const BlogForm = () => {
       this.setState({
         files: files,
       });
+      {
+        /* SUCCESSFULLY STORING IMAGE IN CONSOLE/TERMINAL */
+      }
       console.log(files);
     }
 
@@ -101,7 +102,6 @@ const BlogForm = () => {
           <DropzoneArea
             acceptedFiles={["image/*"]}
             dropzoneText={"Drag image here or click"}
-            //   onChange={(files) => console.log("Files:", files)}
             onChange={this.handleChange.bind(this)}
           />
         </>
@@ -115,7 +115,9 @@ const BlogForm = () => {
         <Row>
           <TitleRow>
             <TextField id="blog-title" label="Title" variant="outlined" />
-            <Typography variant="h4">Micheal Skinner</Typography>
+
+            {/* DYNAMICALLY INPUT NAME */}
+            <Typography variant="h4">{`name`}</Typography>
           </TitleRow>
           <CardHeader
             action={
@@ -123,17 +125,12 @@ const BlogForm = () => {
                 <MoreVertIcon />
               </IconButton>
             }
-          ></CardHeader>
+          />
         </Row>
-        {/* <CardMedia
-          className={classes.media}
-          // image="https://static-cse.canva.com/blob/130199/17.b1ccd4a6.png"
-          title="Image / media"
-        ></CardMedia> */}
 
         {/* Picture DropZone */}
         <Dropzone />
-        {/* <DropzoneArea /> */}
+
         <CardActions disableSpacing>
           <IconButton
             className={clsx(classes.expand, {
