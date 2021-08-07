@@ -67,7 +67,29 @@ const TitleRow = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  `;
+`;
+
+class SubmitBlogPost extends Component {
+  submitBlogPost = () => {
+    // CHANGE THE LOCAL-STORAGE
+    localStorage.clear();
+    // you can also like localStorage.removeItem('Token');
+    window.location.href = "/home";
+  };
+
+  render() {
+    return (
+      <Button
+        color="secondary"
+        type="submit"
+        variant="contained"
+        onClick={this.submitBlogPost}
+      >
+        Submit
+      </Button>
+    );
+  }
+}
 
 const BlogForm = () => {
   const classes = useStylesCard();
@@ -170,13 +192,14 @@ const BlogForm = () => {
                 variant="outlined"
               />
             </form>
-            <Button
+            <SubmitBlogPost />
+            {/* <Button
               color="primary"
               variant="contained"
               style={{ margin: "0.6rem" }}
             >
               Submit
-            </Button>
+            </Button> */}
           </CardContent>
         </Collapse>
       </Card>

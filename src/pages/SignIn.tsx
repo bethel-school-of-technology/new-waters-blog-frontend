@@ -105,7 +105,6 @@ class UserSignIn extends Component {
         color="secondary"
         type="submit"
         variant="contained"
-        // disabled={isSubmitting}
         onClick={this.signIn}
       >
         Sign In
@@ -178,7 +177,6 @@ const SignIn: React.FunctionComponent = () => {
                       errors,
                       handleBlur,
                       handleChange,
-                      isSubmitting,
                     } = props;
                     return (
                       <Form>
@@ -229,12 +227,6 @@ const SignIn: React.FunctionComponent = () => {
                                 onBlur={handleBlur}
                               />
                             </Grid>
-                            {/* <Button
-                              type="submit"
-                              variant="contained"
-                              color="secondary"
-                              disabled={isSubmitting}
-                            ></Button> */}
                             <UserSignIn />
 
                             <Link to="/auth/sign-up">Sign Up / Register</Link>
