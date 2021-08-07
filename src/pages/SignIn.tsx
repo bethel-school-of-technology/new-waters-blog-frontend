@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import {
   Grid,
   TextField,
@@ -90,6 +90,29 @@ const formStatusProps: FormStatusProps = {
   },
 };
 
+// SIGN IN BUTTON
+class UserSignIn extends Component {
+  signIn = () => {
+    // CHANGE THE LOCAL-STORAGE
+    localStorage.clear();
+    // you can also like localStorage.removeItem('Token');
+    window.location.href = "/home";
+  };
+
+  render() {
+    return (
+      <Button
+        color="secondary"
+        type="submit"
+        variant="contained"
+        onClick={this.signIn}
+      >
+        Sign In
+      </Button>
+    );
+  }
+}
+
 const SignIn: React.FunctionComponent = () => {
   const classes = useStyles();
   const [displayFormStatus, setDisplayFormStatus] = useState(false);
@@ -154,7 +177,6 @@ const SignIn: React.FunctionComponent = () => {
                       errors,
                       handleBlur,
                       handleChange,
-                      isSubmitting,
                     } = props;
                     return (
                       <Form>
@@ -193,7 +215,7 @@ const SignIn: React.FunctionComponent = () => {
                                 variant="outlined"
                                 helperText={
                                   errors.password && touched.password
-                                    ? "Password must contain at least one uppercase, one lowercase, one special character and no spaces"
+                                    ? ""
                                     : "Enter Password"
                                 }
                                 error={
@@ -205,15 +227,8 @@ const SignIn: React.FunctionComponent = () => {
                                 onBlur={handleBlur}
                               />
                             </Grid>
-                            <Button
-                              type="submit"
-                              variant="contained"
-                              color="secondary"
-                              disabled={isSubmitting}
-                            >
-                              Sign In
-                              <Link to="/home">Home</Link>
-                            </Button>
+                            <UserSignIn />
+
                             <Link to="/auth/sign-up">Sign Up / Register</Link>
                             {displayFormStatus && (
                               <div className="formStatus">

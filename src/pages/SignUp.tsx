@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import {
   Grid,
   TextField,
@@ -95,6 +95,28 @@ const formStatusProps: FormStatusProps = {
   },
 };
 
+class UserSignUp extends Component {
+  signUp = () => {
+    // CHANGE THE LOCAL-STORAGE
+    localStorage.clear();
+    // you can also like localStorage.removeItem('Token');
+    window.location.href = "/auth/sign-in";
+  };
+
+  render() {
+    return (
+      <Button
+        color="secondary"
+        type="submit"
+        variant="contained"
+        onClick={this.signUp}
+      >
+        Register
+      </Button>
+    );
+  }
+}
+
 const SignUp: React.FunctionComponent = () => {
   const classes = useStyles();
   const [displayFormStatus, setDisplayFormStatus] = useState(false);
@@ -171,7 +193,7 @@ const SignUp: React.FunctionComponent = () => {
                       errors,
                       handleBlur,
                       handleChange,
-                      isSubmitting,
+                      // isSubmitting,
                     } = props;
                     return (
                       <Form>
@@ -273,14 +295,15 @@ const SignUp: React.FunctionComponent = () => {
                               />
                             </Grid>
 
-                            <Button
+                            {/* <Button
                               type="submit"
                               variant="contained"
                               color="secondary"
                               disabled={isSubmitting}
                             >
                               Register
-                            </Button>
+                            </Button> */}
+                            <UserSignUp />
                             <Link to="/auth/sign-in">
                               Return to Sign In page
                             </Link>
