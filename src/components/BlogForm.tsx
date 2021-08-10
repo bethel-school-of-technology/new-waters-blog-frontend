@@ -134,6 +134,12 @@ const BlogForm = () => {
   return (
     <>
       <Card className={classes.root}>
+        {/* <Row>
+          <TextField id="blog-title" label="Title" variant="outlined" />
+          <Typography variant="h4">{`name`}</Typography>
+          <Menu />
+        </Row> */}
+
         <Row>
           <TitleRow>
             <TextField id="blog-title" label="Title" variant="outlined" />
