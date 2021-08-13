@@ -198,14 +198,14 @@ const BlogForm = () => {
                 variant="outlined"
               />
             </form>
-            <SubmitBlogPost />
-            {/* <Button
+            {/* <SubmitBlogPost /> */}
+            <Button
               color="primary"
               variant="contained"
               style={{ margin: "0.6rem" }}
             >
               Submit
-            </Button> */}
+            </Button>
           </CardContent>
         </Collapse>
       </Card>

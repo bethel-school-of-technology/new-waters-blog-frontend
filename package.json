@@ -12,6 +12,7 @@
     "@types/react-router-dom": "^5.1.8",
     "@types/styled-components": "^5.1.11",
     "@types/yup": "^0.29.13",
+    "axios": "^0.21.1",
     "formik": "^2.2.9",
     "material-ui-dropzone": "^3.5.0",
     "react": "^17.0.2",
