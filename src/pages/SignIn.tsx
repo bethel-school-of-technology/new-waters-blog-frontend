@@ -14,7 +14,7 @@ import { Formik, Form, FormikProps } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Axios from "axios";
+import axios from "axios";
 
 const Box = styled(MuiBox)`
   display: flex;
@@ -51,15 +51,17 @@ const SignIn = () => {
   const [loginStatus, setLoginStatus] = useState("");
 
   const login = () => {
-    Axios.post("http://localhost:5000/sign-in", {
-      username: username,
-      password: password,
-    }).then((response) => {
-      if (response.data.message) {
-      } else {
-        setLoginStatus(response.data[0].username);
-      }
-    });
+    axios
+      .post("http://localhost:5000/sign-in", {
+        username: username,
+        password: password,
+      })
+      .then((response) => {
+        if (response.data.message) {
+        } else {
+          setLoginStatus(response.data[0].username);
+        }
+      });
   };
 
   return (

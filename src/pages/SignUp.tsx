@@ -14,7 +14,7 @@ import { Formik, Form, FormikProps } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Axios from "axios";
+import axios from "axios";
 
 const Box = styled(MuiBox)`
   display: flex;
@@ -48,12 +48,14 @@ const SignUp = () => {
   const [usernameReg, setUsernameReg] = useState("");
   const [passwordReg, setPasswordReg] = useState("");
 
+
+  
   const signUp = () => {
-    Axios.post("", { username: usernameReg, password: passwordReg }).then(
-      (response) => {
+    axios
+      .post("", { username: usernameReg, password: passwordReg })
+      .then((response) => {
         console.log(response);
-      }
-    );
+      });
   };
 
   return (
