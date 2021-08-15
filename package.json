@@ -14,6 +14,7 @@
     "@types/yup": "^0.29.13",
     "axios": "^0.21.1",
     "formik": "^2.2.9",
+    "fs": "0.0.1-security",
     "material-ui-dropzone": "^3.5.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",

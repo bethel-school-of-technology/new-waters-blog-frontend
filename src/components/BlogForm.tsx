@@ -18,6 +18,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import styled from "styled-components";
 import { DropzoneArea } from "material-ui-dropzone";
+import DisplayAllPosts from "./DisplayAllPosts";
 
 const useStylesTextField = makeStyles((theme: Theme) =>
   createStyles({
@@ -62,44 +63,8 @@ const Row = styled.div`
   padding: 0 1rem 0.25rem 0rem;
 `;
 
-const TitleRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-class SubmitBlogPost extends Component {
-  submitBlogPost = () => {
-    // CHANGE THE LOCAL-STORAGE
-    localStorage.clear();
-    // you can also like localStorage.removeItem('Token');
-    window.location.href = "/home";
-  };
-
-  render() {
-    return (
-      <Button
-        color="secondary"
-        type="submit"
-        variant="contained"
-        onClick={this.submitBlogPost}
-      >
-        Submit
-      </Button>
-    );
-  }
-}
-
 const BlogForm = () => {
   const classes = useStylesCard();
-  const [expanded, setExpanded] = React.useState(false);
-
-  const classes1 = useStylesTextField();
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   class Dropzone extends Component {
     constructor(props: any) {
@@ -141,12 +106,10 @@ const BlogForm = () => {
         </Row> */}
 
         <Row>
-          <TitleRow>
-            <TextField id="blog-title" label="Title" variant="outlined" />
+          {/* <TextField id="blog-title" label="Title" variant="outlined" /> */}
 
-            {/* DYNAMICALLY INPUT NAME */}
-            <Typography variant="h4">{`name`}</Typography>
-          </TitleRow>
+          {/* DYNAMICALLY INPUT NAME */}
+          {/* <Typography variant="h4">{`name`}</Typography> */}
           <CardHeader
             action={
               <IconButton aria-label="settings">
@@ -156,58 +119,18 @@ const BlogForm = () => {
           />
         </Row>
 
-        {/* Picture DropZone */}
-        <Dropzone />
-
-        <CardActions disableSpacing>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded,
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            {/* Blog Text Fields */}
-            <form className={classes1.root} noValidate autoComplete="off">
-              <TextField
-                id="news"
-                label="News"
-                multiline
-                rows={8}
-                variant="outlined"
-                fullWidth
-              />
-              <TextField
-                id="stories"
-                label="Stories"
-                multiline
-                rows={8}
-                variant="outlined"
-              />
-              <TextField
-                id="testimonies"
-                label="Testimonies"
-                multiline
-                rows={8}
-                variant="outlined"
-              />
-            </form>
-            {/* <SubmitBlogPost /> */}
-            <Button
+        <CardContent>
+          {/* Blog Text Fields */}
+          <DisplayAllPosts />
+          {/* <SubmitBlogPost /> */}
+          {/* <Button
               color="primary"
               variant="contained"
               style={{ margin: "0.6rem" }}
             >
               Submit
-            </Button>
-          </CardContent>
-        </Collapse>
+            </Button> */}
+        </CardContent>
       </Card>
     </>
   );
