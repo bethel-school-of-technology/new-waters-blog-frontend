@@ -1,12 +1,16 @@
-const TOKEN_KEY = "jwt";
-// export const register = () => {
-//  if (localStorage.setItem(TOKEN_KEY, "string")) {
-//    return true;
-//  }
+const TOKEN_KEY = "This is the key";
 
-//  return false;
-// }
+export const register = () => {
+  localStorage.setItem(TOKEN_KEY, "string");
+  return false;
+};
 
+export const isRegister = () => {
+  if (localStorage.getItem(TOKEN_KEY)) {
+    return true;
+  }
+  return false;
+};
 
 export const login = () => {
   localStorage.setItem(TOKEN_KEY, "TestLogin");

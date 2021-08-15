@@ -1,4 +1,4 @@
-module.exports.blogPost = [
+module.exports.blogPosts = [
   {
     id: 1, // user id connection
     postId: 1,

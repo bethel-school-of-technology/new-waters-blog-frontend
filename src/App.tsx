@@ -17,7 +17,14 @@ import PublicRoute from "./routes/PublicRoute";
 class App extends Component {
   // const [usernameReg, setUsernameReg] = useState('')
   // const [passwordReg, setPasswordReg] = useState('')
+
+  
+  
   render() {
+    // const [token, setToken] = useState();
+    // if(!token) {
+    //   return <Login setToken={setToken} />
+    // }
     return (
       <>
         <Router>

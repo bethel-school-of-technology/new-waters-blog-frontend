@@ -1,17 +1,25 @@
 <h1>{{title}}</h1>
 <p>Welcome to a list of {{title}}</p>
 
+<div>Hi! My name is {{name}}</div>
+
+<ul>
+    {{#each users}}
+    <li>{{this}}</li>
+    {{/each}}
+</ul>
+
 <table>
     <tr>
-        <th>City</th>
-        <th>State</th>
-        <th>Population</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Password</th>
     </tr>
-    {{#each cities}}
+    {{#each user}}
     <tr>
-        <td>{{name}}</td>
-        <td>{{state}}</td>
-        <td>{{population}}</td>
+        <td>{{id}}</td>
+        <td>{{username}}</td>
+        <td>{{password}}</td>
     </tr>
     {{/each}}
 </table>

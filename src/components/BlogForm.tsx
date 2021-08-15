@@ -20,17 +20,6 @@ import styled from "styled-components";
 import { DropzoneArea } from "material-ui-dropzone";
 import DisplayAllPosts from "./DisplayAllPosts";
 
-const useStylesTextField = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      "& .MuiTextField-root": {
-        margin: theme.spacing(1),
-        width: "69ch",
-      },
-    },
-  })
-);
-
 const useStylesCard = makeStyles((theme: Theme) => ({
   root: {
     minWidth: 616,
@@ -66,70 +55,41 @@ const Row = styled.div`
 const BlogForm = () => {
   const classes = useStylesCard();
 
-  class Dropzone extends Component {
-    constructor(props: any) {
-      super(props);
-      this.state = {
-        files: [],
-      };
-    }
-    handleChange(files: any) {
-      this.setState({
-        files: files,
-      });
-      {
-        /* SUCCESSFULLY STORING IMAGE IN CONSOLE/TERMINAL */
-      }
-      console.log(files);
-    }
+  // class Dropzone extends Component {
+  //   constructor(props: any) {
+  //     super(props);
+  //     this.state = {
+  //       files: [],
+  //     };
+  //   }
+  //   handleChange(files: any) {
+  //     this.setState({
+  //       files: files,
+  //     });
+  //     {
+  //       /* SUCCESSFULLY STORING IMAGE IN CONSOLE/TERMINAL */
+  //     }
+  //     console.log(files);
+  //   }
 
-    render() {
-      return (
-        <>
-          <DropzoneArea
-            acceptedFiles={["image/*"]}
-            dropzoneText={"Drag image here or click"}
-            onChange={this.handleChange.bind(this)}
-          />
-        </>
-      );
-    }
-  }
+  //   render() {
+  //     return (
+  //       <>
+  //         <DropzoneArea
+  //           acceptedFiles={["image/*"]}
+  //           dropzoneText={"Drag image here or click"}
+  //           onChange={this.handleChange.bind(this)}
+  //         />
+  //       </>
+  //     );
+  //   }
+  // }
 
   return (
     <>
       <Card className={classes.root}>
-        {/* <Row>
-          <TextField id="blog-title" label="Title" variant="outlined" />
-          <Typography variant="h4">{`name`}</Typography>
-          <Menu />
-        </Row> */}
-
-        <Row>
-          {/* <TextField id="blog-title" label="Title" variant="outlined" /> */}
-
-          {/* DYNAMICALLY INPUT NAME */}
-          {/* <Typography variant="h4">{`name`}</Typography> */}
-          <CardHeader
-            action={
-              <IconButton aria-label="settings">
-                <MoreVertIcon />
-              </IconButton>
-            }
-          />
-        </Row>
-
         <CardContent>
-          {/* Blog Text Fields */}
           <DisplayAllPosts />
-          {/* <SubmitBlogPost /> */}
-          {/* <Button
-              color="primary"
-              variant="contained"
-              style={{ margin: "0.6rem" }}
-            >
-              Submit
-            </Button> */}
         </CardContent>
       </Card>
     </>
