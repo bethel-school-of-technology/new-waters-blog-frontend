@@ -2,7 +2,7 @@ import React from "react";
 
 import axios from "axios";
 
-class Users extends React.Component {
+class UsersDbPull extends React.Component {
   state = {
     userData: [],
   };
@@ -25,7 +25,7 @@ class Users extends React.Component {
   render() {
     console.log(this.state.userData);
     if (this.state.userData.length === 0) {
-      return <div>Failed</div>;
+      return <div>Failed to pull users from database</div>;
     }
     const users = this.state.userData.map((user) => (
       <div key={user.username}>
@@ -36,4 +36,4 @@ class Users extends React.Component {
   }
 }
 
-export default Users;
+export default UsersDbPull;
