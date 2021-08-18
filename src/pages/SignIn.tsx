@@ -1,53 +1,29 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import {
   Grid,
   TextField,
   Button,
-  makeStyles,
-  createStyles,
-  Theme,
   Box as MuiBox,
   Paper as MuiPaper,
   Typography,
 } from "@material-ui/core";
-import { Formik, Form, FormikProps } from "formik";
-import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import axios from "axios";
-import { login, logout } from "../utils";
-import { render } from "@testing-library/react";
+import { login } from "../utils";
 
 const Box = styled(MuiBox)`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 5rem;
-  ]min-width: 30rem;
+  min-width: 30rem;
 `;
 
 const PaperBox = styled(MuiPaper)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  // margin: 10rem;
   padding: 3rem;
-  // max-width: 85rem;
-`;
-
-const Paper = styled(MuiPaper)`
-display: flex  
-padding: 1rem 3rem;
-max-width: 85rem;
-min-width: 85rem;
-`;
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 2rem;
 `;
 
 export default class SignIn extends Component {

@@ -1,13 +1,11 @@
 import * as React from "react";
-import { Component, useState } from "react";
+import { Component } from "react";
 import {
-  Redirect,
-  Route,
   BrowserRouter as Router,
   Switch,
 } from "react-router-dom";
-import BlogPostsDbPull from "./components/BlogPostsDbPull";
-import UsersDbPull from "./components/UsersDbPull";
+import BlogPostsDbPull from "./components/DbBlogPostsPull";
+import UsersDbPull from "./components/DbUsersPull";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";

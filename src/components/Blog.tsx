@@ -12,12 +12,9 @@ const Box = styled(MuiBox)`
 
 const Paper = styled(MuiPaper)`
   display: flex  
-  // flex-direction: column;
-  // align-items: center;
   padding: 1rem 3rem;
   margin: 2rem;
   max-width: 85rem;
-  // min-width: 85rem;
   `;
 
 const Row = styled.div`

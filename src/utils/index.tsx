@@ -1,5 +1,6 @@
 const TOKEN_KEY = "This is the key";
 
+// NEEDS WORK
 export const register = () => {
   localStorage.setItem(TOKEN_KEY, "string");
   return false;
@@ -11,6 +12,7 @@ export const isRegister = () => {
   }
   return false;
 };
+//
 
 export const login = () => {
   localStorage.setItem(TOKEN_KEY, "TestLogin");

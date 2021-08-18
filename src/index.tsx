@@ -1,8 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+// import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+
+const getData = () => {
+  fetch("http://localhost:5000/")
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+};
+getData();
 
 ReactDOM.render(
   <React.StrictMode>

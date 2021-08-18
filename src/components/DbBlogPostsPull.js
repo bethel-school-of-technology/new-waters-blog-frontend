@@ -30,8 +30,6 @@ class BlogPostsDbPull extends React.Component {
     const blogPosts = this.state.blogPostData.map((blogPost) => (
       <div key={blogPost.blogPost}>
         <em>{blogPost.title}</em>:{blogPost.content}
-        {blogPost.content1}
-        {blogPost.content2}
       </div>
     ));
     return <div>{blogPosts}</div>;
