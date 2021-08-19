@@ -1,16 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import useScrollTrigger from "@material-ui/core/useScrollTrigger";
-import { Button } from "@material-ui/core";
-import Fab from "@material-ui/core/Fab";
-import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
-import Zoom from "@material-ui/core/Zoom";
 import styled from "styled-components";
 import Blog from "../components/Blog";
+import { Button } from "@material-ui/core";
+import { logout } from "../utils";
 
 const Column = styled.div`
   display: flex;
@@ -20,71 +16,30 @@ const Column = styled.div`
 
 const RowToolbar = styled(Toolbar)`
   display: flex;
-  // flex-direction: row;
   justify-content: space-between;
 `;
 
-interface Props {
-  children: React.ReactElement;
-}
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      position: "fixed",
-      bottom: theme.spacing(2),
-      right: theme.spacing(2),
-    },
-  })
-);
-
-// SCROLL-TOP FUNCTIONALITY
-function ScrollTop(props: Props) {
-  const { children } = props;
-  const classes = useStyles();
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 100,
-  });
-
-  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const anchor = (
-      (event.target as HTMLDivElement).ownerDocument || document
-    ).querySelector("#back-to-top-anchor");
-
-    if (anchor) {
-      anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
+// LOGOUT BUTTON & FUNCTIONALITY
+const UserLogout = () => {
+  const handleLogout = () => {
+    logout();
+    window.location.reload();
   };
 
   return (
-    <Zoom in={trigger}>
-      <div onClick={handleClick} role="presentation" className={classes.root}>
-        {children}
-      </div>
-    </Zoom>
+    <Button
+      color="secondary"
+      variant="contained"
+      type="button"
+      onClick={handleLogout}
+    >
+      Logout
+    </Button>
   );
-}
-
-// LOGOUT BUTTON
-class UserLogout extends Component {
-  logout = () => {
-    localStorage.clear();
-    // you can also like localStorage.removeItem('Token');
-    window.location.href = "/";
-  };
-
-  render() {
-    return (
-      <Button onClick={this.logout} variant="contained">
-        Logout
-      </Button>
-    );
-  }
-}
+};
 
 // TOP APP BAR
-function Home(props: Props) {
+function Home() {
   return (
     <React.Fragment>
       <CssBaseline />
@@ -104,12 +59,6 @@ function Home(props: Props) {
       <Toolbar id="return-to-top" />
       {/* BLOG */}
       <Blog />
-      {/* SCROLL-TOP FUNCTIONALITY */}
-      <ScrollTop {...props}>
-        <Fab color="secondary" size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
     </React.Fragment>
   );
 }

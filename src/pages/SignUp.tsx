@@ -1,338 +1,210 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import {
   Grid,
   TextField,
   Button,
-  makeStyles,
-  createStyles,
-  Theme,
   Box as MuiBox,
   Paper as MuiPaper,
   Typography,
 } from "@material-ui/core";
-import { Formik, Form, FormikProps } from "formik";
-import * as Yup from "yup";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const Box = styled(MuiBox)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5rem;
+  ]min-width: 30rem;
 `;
 
 const PaperBox = styled(MuiPaper)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
+  // margin: 10rem;
+  padding: 3rem;
+  // max-width: 85rem;
 `;
 
-const Paper = styled(MuiPaper)`
-  display: flex  
-  padding: 1rem 3rem;
-  max-width: 85rem;
-  // min-width: 85rem;
-  `;
+export default class SignUp extends React.Component {
+  // state = {
+  //   username: "",
+  //   password: false,
+  // };
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 2rem;
-`;
+  // handleChange = (event: any) => {
+  //   const input = event.target;
+  //   const value = input.value;
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      maxWidth: "200px",
-      display: "block",
-      margin: "0 auto",
-    },
-    textField: {
-      "& > *": {
-        width: "100%",
-      },
-    },
-    submitButton: {
-      marginTop: "",
-    },
-    title: { textAlign: "center" },
-    successMessage: { color: "green" },
-    errorMessage: { color: "red" },
-  })
-);
+  //   this.setState({ [input.name]: value });
+  // };
 
-interface SignUpForm {
-  fullName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+  // componentDidMount() {
+  //   // const password = localStorage.Item("password", JSON.stringify(password as any));
+  //   // const username = localStorage.setItem("username", JSON.stringify(username as any));
+  //   // this.setState({ username, password });
+  // }
 
-interface FormStatus {
-  message: string;
-  type: string;
-}
+  // handleFormSubmit = (props: any) => {
+  //   const { username, password } = this.state;
+  //   // localStorage.setItem("password", password as any);
+  //   // localStorage.setItem("username", password ? username : "");
 
-interface FormStatusProps {
-  [key: string]: FormStatus;
-}
+  //   // (localStorage.getItem(username as any && password as any) !== null)
 
-const formStatusProps: FormStatusProps = {
-  success: {
-    message: "Signed up successfully.",
-    type: "success",
-  },
-  duplicate: {
-    message: "Email already exist. Please use different email.",
-    type: "error",
-  },
-  error: {
-    message: "Something went wrong. Please try again.",
-    type: "error",
-  },
-};
+  //   if (localStorage.setItem("username", password ? username : "") !== null)
+  //     if (localStorage.setItem("password", password as any) !== null) {
+  //       console.log(`password and username was created`);
+  //       // login();
+  //       // props.history.push("/");
+  //     } else {
+  //       console.error(`password and username NOT created`);
+  //     }
+  //   props.preventDefault();
+  // };
 
-class UserSignUp extends Component {
-  signUp = () => {
-    // CHANGE THE LOCAL-STORAGE
-    localStorage.clear();
-    // you can also like localStorage.removeItem('Token');
-    window.location.href = "/auth/sign-in";
+  state = {
+    username: "",
+    password: "",
   };
+
+  handleChange = (event: any) => {
+    const input = event.target;
+    const value = input.value;
+
+    this.setState({ [input.name]: value });
+    this.setState({ [input.password]: value });
+  };
+
+  componentDidMount() {
+    const password = localStorage.getItem("password") === "";
+    const username = localStorage.getItem("username") === "";
+    this.setState({ username, password });
+  }
+
+  handleFormSubmit = (props: any) => {
+    const { username, password } = this.state;
+    // localStorage.setItem("password", password as any);
+    // localStorage.setItem("username", password ? username : "");
+
+    // (localStorage.getItem(username as any && password as any) !== null)
+
+    if (localStorage.setItem("username", password ? username : "") !== null)
+      if (localStorage.setItem("password", password as string) !== null) {
+        console.log(`password and username exists`);
+        // register();
+      } else {
+        console.error(`password and username NOT set`);
+      }
+    props.preventDefault();
+  };
+
+  // constructor (props: any) {
+  //   super(props);
+  //   this.myRef = React.createRef();
+  // }
+  // render() {
+  //   return <div ref={this.myRef} />
+  // }
+
+  //   this.state.username = React.createRef(),
+  //    this.password = React.createRef()
+
+  //   signIn = (event: any) => {
+  //   this.username = React.createRef(),
+  //    this.password = React.createRef()
+
+  //     localStorage.setItem("formData", JSON.stringify(formData));
+  //     console.log(localStorage.getItem("formData"));
+  //     event.preventDefault();
+  //   }
+  // componentDidMount() {
+  //   const password = localStorage.getItem("password") === "true";
+  //   const username = password ? localStorage.getItem("username") : "";
+  //   this.setState({ username, password });
+  // }
+
+  // handleChange = (event: any) => {
+  //   const input = event.target;
+  //   const value = input.type === "checkbox" ? input.checked : input.value;
+
+  //   this.setState({ [input.name]: value });
+  // };
+
+  // handleFormSubmit = (props: any) => {
+  //   const { username, password } = this.state;
+  //   // localStorage.setItem("password", password as any);
+  //   // localStorage.setItem("username", password ? username : "");
+
+  //   // (localStorage.getItem(username as any && password as any) !== null)
+
+  //   if (localStorage.setItem("username", password ? username : "") !== null)
+  //     if (localStorage.setItem("password", password as any) !== null) {
+  //       console.log(`password and username exists`);
+  //       login();
+  //       props.history.push("/sign-in");
+  //     } else {
+  //       console.error(`password and username NOT found`);
+  //     }
+  // };
 
   render() {
     return (
-      <Button
-        color="secondary"
-        type="submit"
-        variant="contained"
-        onClick={this.signUp}
-      >
-        Register
-      </Button>
+      <form onSubmit={this.handleFormSubmit}>
+        <PaperBox>
+          <Box>
+            <Grid container justify="space-around">
+              <Typography>Register</Typography>
+              <Grid container justify="space-around">
+                <Grid item>
+                  {/* USERNAME */}
+                  <Grid item>
+                    <TextField
+                      name="username"
+                      id="username"
+                      label="Username"
+                      type="username"
+                      variant="outlined"
+                      value={this.state.username}
+                      onChange={this.handleChange}
+                      // onChange={(e) => {
+                      //   setUsername(e.target.value);
+                      // }}
+                    />
+                  </Grid>
+                  {/* PASSWORD */}
+                  <Grid item>
+                    <TextField
+                      name="password"
+                      id="password"
+                      label="Password"
+                      type="password"
+                      variant="outlined"
+                      value={this.state.password}
+                      onChange={this.handleChange}
+                      // onChange={(e) => {
+                      //   setPassword(e.target.value);
+                      // }}
+                    />
+                  </Grid>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="secondary"
+                    // onClick={() => handleLogin()}
+                    // onClick={login}
+                    // disabled={isSubmitting}
+                  >
+                    Register
+                  </Button>
+                  <Link to="/sign-in">Back to Sign In</Link>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Box>
+        </PaperBox>
+      </form>
     );
   }
 }
-
-const SignUp: React.FunctionComponent = () => {
-  const classes = useStyles();
-  const [displayFormStatus, setDisplayFormStatus] = useState(false);
-  const [formStatus, setFormStatus] = useState<FormStatus>({
-    message: "",
-    type: "",
-  });
-
-  const createNewUser = async (data: SignUpForm, resetForm: Function) => {
-    try {
-      // API call integration will be here. Handle success and error response accordingly.
-      if (data) {
-        setFormStatus(formStatusProps.success);
-        resetForm({});
-      }
-    } catch (error) {
-      const response = error.response;
-      if (response.data === "user already exist" && response.status === 400) {
-        setFormStatus(formStatusProps.duplicate);
-      } else {
-        setFormStatus(formStatusProps.error);
-      }
-    } finally {
-      setDisplayFormStatus(true);
-    }
-  };
-
-  return (
-    <>
-      <Box>
-        <PaperBox>
-          <Typography variant="h5">Register</Typography>
-          <Paper>
-            <Row>
-              <div className={classes.root}>
-                <Formik
-                  initialValues={{
-                    fullName: "",
-                    email: "",
-                    password: "",
-                    confirmPassword: "",
-                  }}
-                  onSubmit={(values: SignUpForm, actions) => {
-                    createNewUser(values, actions.resetForm);
-                    setTimeout(() => {
-                      actions.setSubmitting(false);
-                    }, 500);
-                  }}
-                  validationSchema={Yup.object().shape({
-                    email: Yup.string().email().required("Enter a valid email"),
-                    fullName: Yup.string(),
-                    password: Yup.string()
-                      .matches(
-                        /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,20}\S$/
-                      )
-                      .required(
-                        "Password must contain at least one uppercase, one lowercase, one special character and no spaces"
-                      ),
-                    confirmPassword: Yup.string()
-                      .required("Required")
-                      .test(
-                        "password-match",
-                        "Password must match",
-                        function (value) {
-                          return this.parent.password === value;
-                        }
-                      ),
-                  })}
-                >
-                  {(props: FormikProps<SignUpForm>) => {
-                    const {
-                      values,
-                      touched,
-                      errors,
-                      handleBlur,
-                      handleChange,
-                      // isSubmitting,
-                    } = props;
-                    return (
-                      <Form>
-                        <Grid container justify="space-around">
-                          <Grid item className={classes.textField}>
-                            {/* Full Name */}
-                            <Grid item className={classes.textField}>
-                              <TextField
-                                name="fullName"
-                                id="fullName"
-                                label="Full Name"
-                                value={values.fullName}
-                                type="text"
-                                variant="outlined"
-                                helperText={
-                                  errors.fullName && touched.fullName
-                                    ? errors.fullName
-                                    : "Enter your full name."
-                                }
-                                error={
-                                  errors.fullName && touched.fullName
-                                    ? true
-                                    : false
-                                }
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                              />
-                            </Grid>
-
-                            {/* Email */}
-                            <Grid item className={classes.textField}>
-                              <TextField
-                                name="email"
-                                id="email"
-                                label="Email"
-                                value={values.email}
-                                type="email"
-                                variant="outlined"
-                                helperText={
-                                  errors.email && touched.email
-                                    ? errors.email
-                                    : "Enter email"
-                                }
-                                error={
-                                  errors.email && touched.email ? true : false
-                                }
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                              />
-                            </Grid>
-
-                            {/* Password */}
-                            <Grid item className={classes.submitButton}>
-                              <TextField
-                                name="password"
-                                id="password"
-                                label="Password"
-                                value={values.password}
-                                type="password"
-                                variant="outlined"
-                                helperText={
-                                  errors.password && touched.password
-                                    ? "Password must contain at least one uppercase, one lowercase, one special character and no spaces"
-                                    : "Enter Password"
-                                }
-                                error={
-                                  errors.password && touched.password
-                                    ? true
-                                    : false
-                                }
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                              />
-                            </Grid>
-
-                            {/* Confirm Password */}
-                            <Grid item className={classes.textField}>
-                              <TextField
-                                name="confirmPassword"
-                                id="confirmPassword"
-                                label="Confirm password"
-                                value={values.confirmPassword}
-                                type="password"
-                                variant="outlined"
-                                helperText={
-                                  errors.confirmPassword &&
-                                  touched.confirmPassword
-                                    ? errors.confirmPassword
-                                    : "Re-enter password to confirm"
-                                }
-                                error={
-                                  errors.confirmPassword &&
-                                  touched.confirmPassword
-                                    ? true
-                                    : false
-                                }
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                              />
-                            </Grid>
-
-                            {/* <Button
-                              type="submit"
-                              variant="contained"
-                              color="secondary"
-                              disabled={isSubmitting}
-                            >
-                              Register
-                            </Button> */}
-                            <UserSignUp />
-                            <Link to="/auth/sign-in">
-                              Return to Sign In page
-                            </Link>
-                            {displayFormStatus && (
-                              <div className="formStatus">
-                                {formStatus.type === "error" ? (
-                                  <p className={classes.errorMessage}>
-                                    {formStatus.message}
-                                  </p>
-                                ) : formStatus.type === "success" ? (
-                                  <p className={classes.successMessage}>
-                                    {formStatus.message}
-                                  </p>
-                                ) : null}
-                              </div>
-                            )}
-                          </Grid>
-                        </Grid>
-                      </Form>
-                    );
-                  }}
-                </Formik>
-              </div>
-            </Row>
-          </Paper>
-        </PaperBox>
-      </Box>
-    </>
-  );
-};
-
-export default SignUp;

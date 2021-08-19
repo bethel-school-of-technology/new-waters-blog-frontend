@@ -1,261 +1,217 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import {
   Grid,
   TextField,
   Button,
-  makeStyles,
-  createStyles,
-  Theme,
   Box as MuiBox,
   Paper as MuiPaper,
   Typography,
 } from "@material-ui/core";
-import { Formik, Form, FormikProps } from "formik";
-import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { login } from "../utils";
 
 const Box = styled(MuiBox)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5rem;
+  min-width: 30rem;
 `;
 
 const PaperBox = styled(MuiPaper)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
+  padding: 3rem;
 `;
 
-const Paper = styled(MuiPaper)`
-  display: flex  
-  padding: 1rem 3rem;
-  max-width: 85rem;
-  // min-width: 85rem;
-  `;
+export default class SignIn extends Component {
+  state = {
+    username: "",
+    password: "",
+  };
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 2rem;
-`;
+  handleChange = (event: any) => {
+    const input = event.target;
+    const value = input.value;
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      maxWidth: "200px",
-      display: "block",
-      margin: "0 auto",
-    },
-    textField: {
-      "& > *": {
-        width: "100%",
-      },
-    },
-    submitButton: {
-      marginTop: "1rem",
-    },
-    title: { textAlign: "center" },
-    successMessage: { color: "green" },
-    errorMessage: { color: "red" },
-  })
-);
+    this.setState({ [input.name]: value });
+    this.setState({ [input.password]: value });
+  };
 
-interface SignInForm {
-  email: string;
-  password: string;
-}
+  componentDidMount() {
+    const password = localStorage.getItem("password") === "";
+    const username = localStorage.getItem("username") === "";
+    this.setState({ username, password });
+  }
 
-interface FormStatus {
-  message: string;
-  type: string;
-}
+  handleFormSubmit = (props: any) => {
+    const { username, password } = this.state;
+    // localStorage.setItem("password", password as any);
+    // localStorage.setItem("username", password ? username : "");
 
-interface FormStatusProps {
-  [key: string]: FormStatus;
-}
+    // (localStorage.getItem(username as any && password as any) !== null)
 
-const formStatusProps: FormStatusProps = {
-  success: {
-    message: "Signed in successfully.",
-    type: "success",
-  },
-
-  error: {
-    message: "Something went wrong. Please try again.",
-    type: "error",
-  },
-};
-
-// SIGN IN BUTTON
-class UserSignIn extends Component {
-  signIn = () => {
-    // CHANGE THE LOCAL-STORAGE
-    localStorage.clear();
-    // you can also like localStorage.removeItem('Token');
-    window.location.href = "/home";
+    if (localStorage.setItem("username", password ? username : "") !== null)
+      if (localStorage.setItem("password", password as string) !== null) {
+        console.log(`password and username exists`);
+        login();
+        props.history.push("/");
+      } else {
+        console.error(`password and username NOT found`);
+      }
   };
 
   render() {
     return (
-      <Button
-        color="secondary"
-        type="submit"
-        variant="contained"
-        onClick={this.signIn}
-      >
-        Sign In
-      </Button>
+      <form onSubmit={this.handleFormSubmit}>
+        <PaperBox>
+          <Box>
+            <Grid container justify="space-around">
+              <Typography>Sign In</Typography>
+              <Grid container justify="space-around">
+                <Grid item>
+                  {/* USERNAME */}
+                  <Grid item>
+                    <TextField
+                      name="username"
+                      id="username"
+                      label="Username"
+                      type="username"
+                      variant="outlined"
+                      value={this.state.username}
+                      onChange={this.handleChange}
+                      // onChange={(e) => {
+                      //   setUsername(e.target.value);
+                      // }}
+                    />
+                  </Grid>
+                  {/* PASSWORD */}
+                  <Grid item>
+                    <TextField
+                      name="password"
+                      id="password"
+                      label="Password"
+                      type="password"
+                      variant="outlined"
+                      value={this.state.password}
+                      onChange={this.handleChange}
+                      // onChange={(e) => {
+                      //   setPassword(e.target.value);
+                      // }}
+                    />
+                  </Grid>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="secondary"
+                    // onClick={() => handleLogin()}
+                    // onClick={login}
+                    // disabled={isSubmitting}
+                  >
+                    Login
+                  </Button>
+                  <Link to="/sign-up">Sign Up / Register</Link>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Box>
+        </PaperBox>
+      </form>
     );
   }
 }
 
-const SignIn: React.FunctionComponent = () => {
-  const classes = useStyles();
-  const [displayFormStatus, setDisplayFormStatus] = useState(false);
-  const [formStatus, setFormStatus] = useState<FormStatus>({
-    message: "",
-    type: "",
-  });
+// function SignIn(props: any) {
+//   // const [username, setUsername] = useState("");
+//   // const [password, setPassword] = useState("");
 
-  const signInUser = async (data: SignInForm, resetForm: Function) => {
-    try {
-      // API call integration will be here. Handle success and error response accordingly.
-      if (data) {
-        setFormStatus(formStatusProps.success);
-        resetForm({});
-      }
-    } catch (error) {
-      const response = error.response;
-      if (response.data === "error" && response.status === 400) {
-        setFormStatus(formStatusProps.duplicate);
-      } else {
-        setFormStatus(formStatusProps.error);
-      }
-    } finally {
-      setDisplayFormStatus(true);
-    }
-  };
+//   // const [loginStatus, setLoginStatus] = useState("");
 
-  console.log();
+//   const state = {
+//     username: "",
+//     password: "",
+//   };
 
-  return (
-    <>
-      <Box>
-        <PaperBox>
-          <Typography variant="h5">Sign In</Typography>
-          <Paper>
-            <Row>
-              <div className={classes.root}>
-                <Formik
-                  initialValues={{
-                    email: "",
-                    password: "",
-                  }}
-                  onSubmit={(values: SignInForm, actions) => {
-                    signInUser(values, actions.resetForm);
-                    setTimeout(() => {
-                      actions.setSubmitting(false);
-                    }, 500);
-                  }}
-                  validationSchema={Yup.object().shape({
-                    email: Yup.string().email().required("Enter a valid email"),
-                    password: Yup.string()
-                      .matches(
-                        /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{8,20}\S$/
-                      )
-                      .required("Enter correct password"),
-                  })}
-                >
-                  {(props: FormikProps<SignInForm>) => {
-                    const {
-                      values,
-                      touched,
-                      errors,
-                      handleBlur,
-                      handleChange,
-                    } = props;
-                    return (
-                      <Form>
-                        <Grid container justify="space-around">
-                          <Grid item className={classes.textField}>
-                            {/* Email */}
-                            <Grid item className={classes.textField}>
-                              <TextField
-                                name="email"
-                                id="email"
-                                label="Email"
-                                value={values.email}
-                                type="email"
-                                variant="outlined"
-                                helperText={
-                                  errors.email && touched.email
-                                    ? errors.email
-                                    : "Enter email"
-                                }
-                                error={
-                                  errors.email && touched.email ? true : false
-                                }
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                              />
-                            </Grid>
+//   const handleChange = (event: any) => {
+//     const input = event.target;
+//     const value = input.value;
 
-                            {/* Password */}
-                            <Grid item className={classes.submitButton}>
-                              <TextField
-                                name="password"
-                                id="password"
-                                label="Password"
-                                value={values.password}
-                                type="password"
-                                variant="outlined"
-                                helperText={
-                                  errors.password && touched.password
-                                    ? ""
-                                    : "Enter Password"
-                                }
-                                error={
-                                  errors.password && touched.password
-                                    ? true
-                                    : false
-                                }
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                              />
-                            </Grid>
-                            <UserSignIn />
+//     event.setState({ [input.username]: value });
+//     event.setState({ [input.password]: value });
+//   };
 
-                            <Link to="/auth/sign-up">Sign Up / Register</Link>
-                            {displayFormStatus && (
-                              <div className="formStatus">
-                                {formStatus.type === "error" ? (
-                                  <p className={classes.errorMessage}>
-                                    {formStatus.message}
-                                  </p>
-                                ) : formStatus.type === "success" ? (
-                                  <p className={classes.successMessage}>
-                                    {formStatus.message}
-                                  </p>
-                                ) : null}
-                              </div>
-                            )}
-                          </Grid>
-                        </Grid>
-                      </Form>
-                    );
-                  }}
-                </Formik>
-              </div>
-            </Row>
-          </Paper>
-        </PaperBox>
-      </Box>
-    </>
-  );
-};
+//   const handleFormSubmit = (event: any) => {
+//     const { username, password } = event.state;
+//     localStorage.setItem("username", username);
+//     localStorage.setItem("password", password);
+//   };
 
-export default SignIn;
+//   const handleLogin = () => {
+//     login();
+//     props.history.push("/");
+//   };
+
+//   // const login = () => {
+//   //   axios
+//   //   .post("http://localhost:5000/sign-in", {
+//   //     username: username,
+//   //     password: password,
+//   //   })
+//   //   .then((response) => {
+//   //     if (response.data.message) {
+//   //     } else {
+//   //       setLoginStatus(response.data[0].username);
+//   //       }
+//   //     });
+//   // };
+//   return (
+//     <form onSubmit={props.handleFormSubmit}>
+//       <Grid container justify="space-around">
+//         <Grid item>
+//           {/* Username */}
+//           <Grid item>
+//             <TextField
+//               name="username"
+//               id="username"
+//               label="Username"
+//               type="username"
+//               variant="outlined"
+//               // onChange={(e) => {
+//               //   setUsername(e.target.value);
+//               // }}
+//             />
+//           </Grid>
+
+//           {/* Password */}
+//           <Grid item>
+//             <TextField
+//               name="password"
+//               id="password"
+//               label="Password"
+//               type="password"
+//               variant="outlined"
+//               // onChange={(e) => {
+//               //   setPassword(e.target.value);
+//               // }}
+//             />
+//           </Grid>
+//           <Button
+//             type="submit"
+//             variant="contained"
+//             color="secondary"
+//             onClick={() => handleLogin()}
+//             // onClick={login}
+//             // disabled={isSubmitting}
+//           >
+//             Login
+//           </Button>
+//           <Link to="/sign-up">Sign Up / Register</Link>
+//         </Grid>
+//       </Grid>
+//     </form>
+//   );
+// }
+
+// export default SignIn;
