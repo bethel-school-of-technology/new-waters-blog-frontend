@@ -41,6 +41,11 @@ const Blog = () => {
                 <BlogForm />
               </Item>
             </div>
+            <div>
+              <Item elevation={3}>
+                <BlogForm />
+              </Item>
+            </div>
           </Row>
         </Paper>
       </Box>

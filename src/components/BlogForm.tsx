@@ -7,6 +7,9 @@ import {
 } from "@material-ui/core/";
 import styled from "styled-components";
 import DisplayAllPosts from "./DisplayAllPosts";
+import CreateNewPost from "./CreateNewPost";
+import Post from "./Post";
+// import CreatePost from "./blog/CreatePost";
 
 const useStylesCard = makeStyles((theme: Theme) => ({
   root: {
@@ -41,6 +44,7 @@ const BlogForm = () => {
       <Card className={classes.root}>
         <CardContent>
           <DisplayAllPosts />
+          {/* <CreatePost /> */}
         </CardContent>
       </Card>
     </>

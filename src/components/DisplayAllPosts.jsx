@@ -2,6 +2,12 @@ import React, { useState, useRef } from "react";
 import CreateNewPost from "./CreateNewPost";
 import Post from "./Post";
 import ModifyPost from "./ModifyPost";
+import styled from "styled-components";
+
+const ButtonAdjuster = styled.div`
+  padding-top: 2px;
+  padding-left: 8px;
+`;
 
 const DisplayAllPosts = () => {
   const [title, setTitle] = useState("");
@@ -120,7 +126,6 @@ const DisplayAllPosts = () => {
 
   return (
     <>
-      <h2>All Posts</h2>
       {!allPosts.length ? (
         <div>
           <h3>There is nothing to see here!</h3>
@@ -140,8 +145,11 @@ const DisplayAllPosts = () => {
           );
         })
       )}
-
-      <button onClick={toggleCreateNewPost}>Create New</button>
+      <ButtonAdjuster>
+        <button size="large" onClick={toggleCreateNewPost}>
+          Create New
+        </button>
+      </ButtonAdjuster>
     </>
   );
 };
