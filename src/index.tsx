@@ -16,7 +16,7 @@ ReactDOM.render(
   <React.StrictMode>
     <div>
       <App />
-      <Users />
+      {/* <Users /> */}
     </div>
   </React.StrictMode>,
   document.getElementById("root")

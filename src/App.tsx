@@ -1,9 +1,6 @@
 import * as React from "react";
 import { Component, useState } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-import { client } from "./client";
-import BlogPostsDbPull from "./components/DbBlogPostsPull";
-import UsersDbPull from "./components/DbUsersPull";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
