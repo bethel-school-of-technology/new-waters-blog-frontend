@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
-import CreateNewPost from "./CreateNewPost";
-import Post from "./Post";
-import ModifyPost from "./ModifyPost";
+import React, { useState, useRef, useEffect } from "react";
+import CreateNewPost from "./CreateNew";
+import Post from "./Submitted";
+import ModifyPost from "./Edit";
 import styled from "styled-components";
 import { Typography, Button } from "@material-ui/core";
 
@@ -20,6 +20,8 @@ const Column = styled.div`
   flex-direction: column;
   padding: 1rem;
 `;
+
+
 
 const DisplayAllPosts = () => {
   const [title, setTitle] = useState("");
@@ -105,6 +107,14 @@ const DisplayAllPosts = () => {
     toggleCreateNewPost();
   };
 
+  const name = window.localStorage.getItem("username")
+
+  useEffect(() => {
+    console.log(name)
+  }, [])
+
+  // const name = window.localStorage.getItem(username)
+
   if (isCreateNewPost) {
     return (
       <>
@@ -140,6 +150,7 @@ const DisplayAllPosts = () => {
     <>
       {!allPosts.length ? (
         <CenterDiv>
+          <div>{name}</div>
           <div>
             <h3>There is nothing to see here!</h3>
           </div>

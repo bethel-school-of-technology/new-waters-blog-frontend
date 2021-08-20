@@ -27,7 +27,7 @@ const ButtonDiv = styled.div`
   padding: 5px;
 `;
 
-const Post = (props: any) => {
+const Submitted = (props: any) => {
   const { title, content, editPost, id, deletePost } = props;
   return (
     <>
@@ -38,7 +38,6 @@ const Post = (props: any) => {
           </Typography>
           {/* <p>{image}</p> */}
           <Typography variant="body1" display="block" align="center">
-            {" "}
             {content}
           </Typography>
           <div>
@@ -60,4 +59,4 @@ const Post = (props: any) => {
     </>
   );
 };
-export default Post;
+export default Submitted;

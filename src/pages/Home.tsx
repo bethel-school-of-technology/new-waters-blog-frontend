@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -40,6 +40,12 @@ const UserLogout = () => {
 
 // TOP APP BAR
 function Home() {
+  const name = window.localStorage.getItem("username");
+
+  useEffect(() => {
+    console.log(name);
+  }, []);
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -52,6 +58,7 @@ function Home() {
               New's that brings life in the midst of chaos
             </Typography>
           </Column>
+          <Typography variant="h3">Take it away {name}!</Typography>
           {/* LOGOUT BUTTON */}
           <UserLogout />
         </RowToolbar>

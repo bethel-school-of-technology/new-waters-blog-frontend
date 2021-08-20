@@ -7,12 +7,12 @@ import {
 } from "@material-ui/core/";
 import styled from "styled-components";
 import DisplayAllPosts from "./content/DisplayAllPosts";
-import CreateNewPost from "./content/CreateNewPost";
-import Post from "./content/Post";
+import CreateNewPost from "./content/CreateNew";
+import Post from "./content/Submitted";
 // import CreatePost from "./blog/CreatePost";
-import ItemList from "./comments/ItemList";
-import ItemsContext from "./comments/items-context";
-import itemsReducer from "./comments/items";
+import ItemList from "./comments/CommentList";
+import ItemsContext from "./comments/Context";
+import itemsReducer from "./comments/Reducer";
 import AddItemForm from "./comments/AddComment";
 
 const useStylesCard = makeStyles((theme) => ({

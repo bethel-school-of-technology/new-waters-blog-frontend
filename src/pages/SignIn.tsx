@@ -41,10 +41,13 @@ export default class SignIn extends Component {
   };
 
   componentDidMount() {
+    let url = "http://localhost:5000/"
     const password = localStorage.getItem("password") === "";
     const username = localStorage.getItem("username") === "";
     this.setState({ username, password });
+    const name = window.localStorage.getItem("username")
   }
+
 
   handleFormSubmit = (props: any) => {
     const { username, password } = this.state;

@@ -1,6 +1,6 @@
 import { Typography } from "@material-ui/core";
 import React, { useContext, useState } from "react";
-import ItemsContext from "./items-context";
+import ItemsContext from "./Context";
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 

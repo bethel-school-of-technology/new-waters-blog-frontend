@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Box as MuiBox, Paper as MuiPaper } from "@material-ui/core";
 import BlogForm from "./BlogForm";
@@ -31,10 +31,17 @@ const Item = styled(MuiPaper)`
 `;
 
 const Blog = () => {
+  const name = window.localStorage.getItem("username");
+
+  useEffect(() => {
+    console.log(name);
+  }, []);
+  
   return (
     <>
       <Box>
         <Paper>
+          <div>{name}</div>
           <Row>
             <div>
               <Item elevation={3}>

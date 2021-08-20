@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import ItemsContext from './items-context';
-import Item from './Item';
+import React, { useContext } from "react";
+import ItemsContext from "./Context";
+import Item from "./Comments";
 
 const ItemList = () => {
   const { items } = useContext(ItemsContext);

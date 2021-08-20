@@ -13,34 +13,34 @@ const Column = styled.div`
   padding: 1rem;
 `;
 
-const ModifyPost = (props: any) => {
-  const { title, content, editPost, id, deletePost } = props;
-
+// Create New Post
+const CreateNew = (props: any) => {
   return (
     <>
       <CenterDiv>
-        <form>
+        <form onSubmit={props.savePost}>
           <Column>
-            <Typography variant="h4">Edit Post</Typography>
+            <Typography variant="h3">Create New Post</Typography>
             <input
-              defaultValue={props.title}
-              onChange={props.savePostTitleToState}
               type="text"
+              onChange={props.savePostTitleToState}
               placeholder="title"
-            />
+              required
+              ref={props.getTitle}
+            ></input>
             <textarea
-              defaultValue={props.content}
-              placeholder="contents"
               onChange={props.savePostContentToState}
+              placeholder="contents"
+              required
+              ref={props.getContent}
             ></textarea>
-            <Button onClick={props.updatePost} color="secondary">
-              Edit
+            <Button variant="contained">
+              <button>Save Post</button>
             </Button>
-            {/* <button onClick={() => returnToPost(id)}>Return To Post</button> */}
           </Column>
         </form>
       </CenterDiv>
     </>
   );
 };
-export default ModifyPost;
+export default CreateNew;
