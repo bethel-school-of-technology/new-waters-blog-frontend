@@ -1,14 +1,14 @@
-const itemsReducer = (state: any, action: any) => {
+const Reducer = (state: any, action: any) => {
   switch (action.type) {
-    case 'POPULATE_ITEMS':
+    case "POPULATE":
       return action.items;
-    case 'ADD_ITEM':
+    case "ADD":
       return [...state, action.item];
-    case 'REMOVE_ITEM':
+    case "REMOVE":
       return state.filter((item: any) => item !== action.itemToBeDeleted);
     default:
       return state;
   }
 };
 
-export default itemsReducer;
+export default Reducer;

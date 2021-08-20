@@ -41,7 +41,7 @@ const Blog = () => {
     <>
       <Box>
         <Paper>
-          <div>{name}</div>
+          {/* <div>{name}</div> */}
           <Row>
             <div>
               <Item elevation={3}>

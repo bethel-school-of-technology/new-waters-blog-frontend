@@ -21,8 +21,6 @@ const Column = styled.div`
   padding: 1rem;
 `;
 
-
-
 const DisplayAllPosts = () => {
   const [title, setTitle] = useState("");
   //   const [image, setImage] = useState("");
@@ -107,11 +105,11 @@ const DisplayAllPosts = () => {
     toggleCreateNewPost();
   };
 
-  const name = window.localStorage.getItem("username")
+  const name = window.localStorage.getItem("username");
 
   useEffect(() => {
-    console.log(name)
-  }, [])
+    console.log(name);
+  }, []);
 
   // const name = window.localStorage.getItem(username)
 
@@ -150,10 +148,8 @@ const DisplayAllPosts = () => {
     <>
       {!allPosts.length ? (
         <CenterDiv>
-          <div>{name}</div>
-          <div>
-            <h3>There is nothing to see here!</h3>
-          </div>
+          {/* <div>{name}</div> */}
+          <div>{/* <h3>There is nothing to see here!</h3> */}</div>
         </CenterDiv>
       ) : (
         allPosts.map((eachPost) => {

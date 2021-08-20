@@ -21,7 +21,7 @@ const AddComment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    itemsDispatch({ type: "ADD_ITEM", item });
+    itemsDispatch({ type: "ADD", item });
     setItem("");
   };
 
@@ -34,7 +34,7 @@ const AddComment = () => {
         <form onSubmit={handleSubmit}>
           <Column>
             <input
-              style={{marginBottom: 5}}
+              style={{ marginBottom: 5 }}
               value={item}
               onChange={(e) => setItem(e.target.value)}
             />

@@ -49,7 +49,7 @@ const BlogForm = () => {
     // @ts-ignore
     const items = JSON.parse(localStorage.getItem("items"));
     if (items) {
-      itemsDispatch({ type: "POPULATE_ITEMS", items });
+      itemsDispatch({ type: "POPULATE", items });
     }
   }, []);
 

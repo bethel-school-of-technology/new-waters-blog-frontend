@@ -29,7 +29,7 @@
 // export default Item;
 
 import React, { useContext } from "react";
-import ItemsContext from "./Context";
+import Context from "./Context";
 import ClearOutlinedIcon from "@material-ui/icons/ClearOutlined";
 import HighlightOffOutlinedIcon from "@material-ui/icons/HighlightOffOutlined";
 import { Button, Typography, IconButton } from "@material-ui/core";
@@ -46,17 +46,17 @@ const Column = styled.div`
   padding: 0.25rem;
 `;
 
-const Item = ({ item }) => {
-  const { itemsDispatch } = useContext(ItemsContext);
-
+const Comments = ({ item }: { item: string }) => {
+  ///const { Dispatch } = useContext(Context);
+  const { itemsDispatch } = useContext(Context);
   return (
     <div>
       <CenterDiv>
-        <Typography variant="h3">{item}</Typography>
+        <Typography variant="h5">{item}</Typography>
         <Button>
           <IconButton
             onClick={() =>
-              itemsDispatch({ type: "REMOVE_ITEM", itemToBeDeleted: item })
+              itemsDispatch({ type: "REMOVE", itemToBeDeleted: item })
             }
           >
             <ClearOutlinedIcon />
@@ -67,7 +67,7 @@ const Item = ({ item }) => {
   );
 };
 
-export default Item;
+export default Comments;
 
 // import React, { useContext } from "react";
 // import ItemsContext from "./items-context";
@@ -92,7 +92,7 @@ export default Item;
 //   itemToBeDeleted: any;
 // }
 
-// function Item({type: "REMOVE_ITEM", itemToBeDeleted: item}: RemoveItem) {
+// function Item({type: "REMOVE", itemToBeDeleted: item}: RemoveItem) {
 //   const { itemsDispatch } = useContext(ItemsContext);
 
 //   return (
