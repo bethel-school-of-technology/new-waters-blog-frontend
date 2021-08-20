@@ -3,10 +3,22 @@ import CreateNewPost from "./CreateNewPost";
 import Post from "./Post";
 import ModifyPost from "./ModifyPost";
 import styled from "styled-components";
+import { Typography, Button } from "@material-ui/core";
 
 const ButtonAdjuster = styled.div`
   padding-top: 2px;
   padding-left: 8px;
+`;
+
+const CenterDiv = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
 `;
 
 const DisplayAllPosts = () => {
@@ -127,9 +139,11 @@ const DisplayAllPosts = () => {
   return (
     <>
       {!allPosts.length ? (
-        <div>
-          <h3>There is nothing to see here!</h3>
-        </div>
+        <CenterDiv>
+          <div>
+            <h3>There is nothing to see here!</h3>
+          </div>
+        </CenterDiv>
       ) : (
         allPosts.map((eachPost) => {
           return (
@@ -145,11 +159,15 @@ const DisplayAllPosts = () => {
           );
         })
       )}
-      <ButtonAdjuster>
-        <button size="large" onClick={toggleCreateNewPost}>
-          Create New
-        </button>
-      </ButtonAdjuster>
+      {/* <ButtonAdjuster> */}
+      <CenterDiv>
+        <Button>
+          <button size="large" onClick={toggleCreateNewPost}>
+            Create New Post
+          </button>
+        </Button>
+      </CenterDiv>
+      {/* </ButtonAdjuster> */}
     </>
   );
 };

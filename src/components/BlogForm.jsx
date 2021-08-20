@@ -13,7 +13,7 @@ import Post from "./content/Post";
 import ItemList from "./comments/ItemList";
 import ItemsContext from "./comments/items-context";
 import itemsReducer from "./comments/items";
-import AddItemForm from "./comments/AddItemForm";
+import AddItemForm from "./comments/AddComment";
 
 const useStylesCard = makeStyles((theme) => ({
   root: {
