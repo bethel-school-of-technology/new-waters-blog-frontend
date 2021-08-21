@@ -10,14 +10,14 @@
 // const blah = ""
 
 // const Item = (props: RemoveItem) => {
-//   const { itemsDispatch } = useContext();
+//   const { Dispatch } = useContext();
 
 //   return (
 //     <div>
 //       <span>{props.item}</span>
 //       <button
 //         onClick={() =>
-//           itemsDispatch(ItemsContext)
+//           Dispatch(ItemsContext)
 //         }
 //       >
 
@@ -48,16 +48,14 @@ const Column = styled.div`
 
 const Comments = ({ item }: { item: string }) => {
   ///const { Dispatch } = useContext(Context);
-  const { itemsDispatch } = useContext(Context);
+  const { Dispatch } = useContext(Context);
   return (
     <div>
       <CenterDiv>
         <Typography variant="h5">{item}</Typography>
         <Button>
           <IconButton
-            onClick={() =>
-              itemsDispatch({ type: "REMOVE", itemToBeDeleted: item })
-            }
+            onClick={() => Dispatch({ type: "REMOVE", itemToBeDeleted: item })}
           >
             <ClearOutlinedIcon />
           </IconButton>
@@ -93,7 +91,7 @@ export default Comments;
 // }
 
 // function Item({type: "REMOVE", itemToBeDeleted: item}: RemoveItem) {
-//   const { itemsDispatch } = useContext(ItemsContext);
+//   const { Dispatch } = useContext(ItemsContext);
 
 //   return (
 //     <div>
@@ -102,7 +100,7 @@ export default Comments;
 //         <Button>
 //           <button
 //             onClick={() =>
-//               itemsDispatch(RemoveItem)
+//               Dispatch(RemoveItem)
 //             }
 //           >
 //             <ClearOutlinedIcon />

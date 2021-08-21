@@ -1,4 +1,4 @@
-const TOKEN_KEY = "This is the key";
+const TOKEN_KEY = "test";
 
 // NEEDS WORK
 export const register = () => {

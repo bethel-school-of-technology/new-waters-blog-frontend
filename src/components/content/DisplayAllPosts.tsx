@@ -35,7 +35,7 @@ const DisplayAllPosts = () => {
   // const getImage = useRef();
   const getContent = useRef();
 
-  const savePostTitleToState = (event) => {
+  const savePostTitleToState = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setTitle(event.target.value);
   };
 
@@ -43,7 +43,7 @@ const DisplayAllPosts = () => {
   //     setImage(event.target.value);
   //   };
 
-  const savePostContentToState = (event) => {
+  const savePostContentToState = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setContent(event.target.value);
   };
 
@@ -52,7 +52,7 @@ const DisplayAllPosts = () => {
   };
 
   // EDIT POST
-  const editPost = (id) => {
+  const editPost = (id: React.SetStateAction<string>) => {
     setEditPostId(id);
     console.log(id);
     toggleModifyPostComponent();
@@ -63,7 +63,7 @@ const DisplayAllPosts = () => {
   };
 
   // DELETE POST
-  const deletePost = (id) => {
+  const deletePost = (id: any) => {
     const modifiedPost = allPosts.filter((eachPost) => {
       return eachPost.id !== id;
     });
@@ -71,7 +71,7 @@ const DisplayAllPosts = () => {
   };
 
   // SUBMIT UPDATE POST
-  const updatePost = (event) => {
+  const updatePost = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     const updatedPost = allPosts.map((eachPost) => {
       if (eachPost.id === editPostId) {
@@ -86,12 +86,12 @@ const DisplayAllPosts = () => {
       console.log(eachPost);
       return eachPost;
     });
-    setAllPosts(updatedPost);
+    setAllPosts(updatedPost as any);
     toggleModifyPostComponent();
   };
 
   // SAVE POST
-  const savePost = (event) => {
+  const savePost = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     const id = Date.now();
     setAllPosts([...allPosts, { title, content, id }]);
@@ -169,9 +169,9 @@ const DisplayAllPosts = () => {
       {/* <ButtonAdjuster> */}
       <CenterDiv>
         <Button>
-          <button size="large" onClick={toggleCreateNewPost}>
+          <Button variant="contained" onClick={toggleCreateNewPost}>
             Create New Post
-          </button>
+          </Button>
         </Button>
       </CenterDiv>
       {/* </ButtonAdjuster> */}

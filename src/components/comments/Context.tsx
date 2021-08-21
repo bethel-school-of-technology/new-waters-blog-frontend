@@ -1,20 +1,22 @@
 import React from "react";
 import { string } from "yup";
 
-interface Action  {
+interface Action {
   type: string;
-  itemToBeDeleted: string
+  itemToBeDeleted: string;
 }
 
 // const Context = React.createContext({
 //   items: [],
-//   itemsDispatch: (action: Action) => {}, //{ type: "REMOVE", itemToBeDeleted: item }
+//   Dispatch: (action: Action) => {
+//     "REMOVE";
+//     item;
+//   }, //{ type: "REMOVE", itemToBeDeleted: item }
 // });
-
 
 const Context = React.createContext({
   items: [],
-  itemsDispatch: () => {}, //{ type: "REMOVE", itemToBeDeleted: item }
+  Dispatch: () => {}, //{ type: "REMOVE", itemToBeDeleted: item }
 });
 
 export default Context;

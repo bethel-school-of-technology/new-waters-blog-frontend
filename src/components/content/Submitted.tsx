@@ -1,4 +1,5 @@
 import { Typography } from "@material-ui/core";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 const CenterDiv = styled.div`
@@ -29,6 +30,19 @@ const ButtonDiv = styled.div`
 
 const Submitted = (props: any) => {
   const { title, content, editPost, id, deletePost } = props;
+
+  useEffect(() => {
+    localStorage.setItem("content", JSON.stringify(content));
+  }, [content]);
+
+  useEffect(() => {
+    localStorage.setItem("title", JSON.stringify(title));
+  }, [title]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("edit", JSON.stringify(editPost));
+  // }, [editPost]);
+
   return (
     <>
       <Padding>

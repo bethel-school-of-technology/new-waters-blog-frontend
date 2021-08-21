@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import ItemsContext from "./Context";
-import Item from "./Comments";
+import Context from "./Context";
+import Comments from "./Comments";
 import styled from "styled-components";
 import { Typography } from "@material-ui/core";
 
@@ -17,7 +17,7 @@ const Name = styled.div`
 `;
 
 const CommentList = () => {
-  const { items } = useContext(ItemsContext);
+  const { items } = useContext(Context);
   const name = window.localStorage.getItem("username");
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const CommentList = () => {
           {items.map((item) => (
             <Name>
               <Typography variant="h6">{name}</Typography>
-              <Item key={item} item={item} />
+              <Comments key={item} item={item} />
             </Name>
           ))}
         </CommentStyling>
