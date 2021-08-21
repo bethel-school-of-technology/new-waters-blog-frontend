@@ -166,7 +166,6 @@ const DisplayAllPosts = () => {
           );
         })
       )}
-      {/* <ButtonAdjuster> */}
       <CenterDiv>
         <Button>
           <Button variant="contained" onClick={toggleCreateNewPost}>
@@ -174,7 +173,6 @@ const DisplayAllPosts = () => {
           </Button>
         </Button>
       </CenterDiv>
-      {/* </ButtonAdjuster> */}
     </>
   );
 };

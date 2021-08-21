@@ -115,7 +115,7 @@ const Blog = () => {
             {/* </StyledPaper> */}
 
             {/* <StyledPaper elevation={3}> */}
-            <Typography>
+            {/* <Typography> */}
               <Context.Provider value={{ items, Dispatch }}>
                 <Card className={classes.root}>
                   <CardContent>
@@ -130,7 +130,7 @@ const Blog = () => {
                   </CardContent>
                 </Card>
               </Context.Provider>
-            </Typography>
+            {/* </Typography> */}
             {/* </StyledPaper> */}
           </Row>
         </Wrapper>
