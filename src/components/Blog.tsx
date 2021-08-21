@@ -8,7 +8,6 @@ import {
   makeStyles,
   CardContent,
 } from "@material-ui/core";
-import BlogForm from "./BlogForm";
 import CommentList from "./comments/CommentList";
 import Context from "./comments/Context";
 import Reducer from "./comments/Reducer";
@@ -52,12 +51,12 @@ const Wrapper = styled(MuiPaper)`
 
 const Row = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  // flex-wrap: wrap;
   justify-content: center;
-  padding: 2rem;
-  max-width: 85rem;
-  min-width: 50rem;
+  padding: 1rem;
+  // max-width: 85rem;
+  // min-width: 50rem;
 `;
 
 const StyledPaper = styled(MuiPaper)`
@@ -67,6 +66,13 @@ const StyledPaper = styled(MuiPaper)`
 
 const Card = styled(MuiCard)`
   padding: 1rem;
+`;
+
+const ListRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const Blog = () => {
@@ -80,7 +86,7 @@ const Blog = () => {
   const [items, Dispatch] = useReducer(Reducer, []);
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("items"));
+    const items = JSON.parse(localStorage.getItem("items") || "{}");
     if (items) {
       Dispatch({ type: "POPULATE", items });
     }
@@ -92,6 +98,7 @@ const Blog = () => {
 
   useEffect(() => {
     console.log(name);
+    console.log(title);
     console.log(content);
     console.log(comments);
   }, []);
@@ -101,24 +108,30 @@ const Blog = () => {
       <Box>
         <Wrapper>
           <Row>
-            <StyledPaper elevation={3}>
-              <Card className={classes.root}>
-                <DisplayAllPosts />
-              </Card>
-            </StyledPaper>
+            {/* <StyledPaper elevation={3}> */}
+            <Card className={classes.root}>
+              <DisplayAllPosts />
+            </Card>
+            {/* </StyledPaper> */}
 
-            <StyledPaper elevation={3}>
-              <Typography>
-                <Context.Provider value={{ items, Dispatch }}>
-                  <Card className={classes.root}>
-                    <CardContent>
-                      <AddComment />
-                      <CommentList />
-                    </CardContent>
-                  </Card>
-                </Context.Provider>
-              </Typography>
-            </StyledPaper>
+            {/* <StyledPaper elevation={3}> */}
+            <Typography>
+              <Context.Provider value={{ items, Dispatch }}>
+                <Card className={classes.root}>
+                  <CardContent>
+                    <ListRow>
+                      <div>
+                        <AddComment />
+                      </div>
+                      <div>
+                        <CommentList />
+                      </div>
+                    </ListRow>
+                  </CardContent>
+                </Card>
+              </Context.Provider>
+            </Typography>
+            {/* </StyledPaper> */}
           </Row>
         </Wrapper>
       </Box>

@@ -1,4 +1,4 @@
-import { TextField, Typography } from "@material-ui/core";
+import { TextField as MuiTextField, Typography } from "@material-ui/core";
 import React, { useContext, useState } from "react";
 import ItemsContext from "./Context";
 import styled from "styled-components";
@@ -13,6 +13,13 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0.25rem;
+`;
+
+const TextField = styled(MuiTextField)`
+  display: flex;
+  width: 20rem;
+  padding: 0.25rem;
+  max-height: 20rem;
 `;
 
 const Button = styled.button``;
@@ -36,7 +43,8 @@ const AddComment = () => {
         <form onSubmit={handleSubmit}>
           <Column>
             <TextField
-              style={{ marginBottom: 5 }}
+              multiline
+              // style={{ marginBottom: 5 }}
               value={item}
               variant="outlined"
               onChange={(e) => setItem(e.target.value)}
