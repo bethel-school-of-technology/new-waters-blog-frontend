@@ -13,6 +13,7 @@ import CommentList from "./comments/CommentList";
 import Context from "./comments/Context";
 import Reducer from "./comments/Reducer";
 import AddComment from "./comments/AddComment";
+import DisplayAllPosts from "./content/DisplayAllPosts";
 
 const useStylesCard = makeStyles((theme) => ({
   root: {
@@ -102,7 +103,7 @@ const Blog = () => {
           <Row>
             <StyledPaper elevation={3}>
               <Card className={classes.root}>
-                <BlogForm />
+                <DisplayAllPosts />
               </Card>
             </StyledPaper>
 
