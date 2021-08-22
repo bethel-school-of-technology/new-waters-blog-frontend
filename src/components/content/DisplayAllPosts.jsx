@@ -3,8 +3,21 @@ import CreateNewPost from "./CreateNew";
 import Post from "./Submitted";
 import ModifyPost from "./Edit";
 import styled from "styled-components";
-import { Typography, Button } from "@material-ui/core";
+// import { Typography, Button } from "@material-ui/core";
 import axios from "axios";
+
+// interface ID {
+//   id: string | null
+// }
+// interface Value {
+//   value: string | null
+// }
+// interface Event {
+//   event: { preventDefault: () => void }
+// }
+// interface Target {
+//   target: { value: React.SetStateAction<string>
+// }
 
 const ButtonAdjuster = styled.div`
   padding-top: 2px;
@@ -22,6 +35,20 @@ const Column = styled.div`
   padding: 1rem;
 `;
 
+const Button = styled.button`
+// display: flex;
+// justify-content: center;
+// align-item: center;
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  padding: 10px 60px;
+  border-radius: 20px;
+  margin: 10px 0px;
+  cursor: pointer;
+  }
+`;
+
 const DisplayAllPosts = () => {
   //   const [image, setImage] = useState("");
   // const getImage = useRef();
@@ -34,7 +61,7 @@ const DisplayAllPosts = () => {
   const getContent = useRef();
 
   // ALL POSTS
-  const [allPosts, setAllPosts] = useState([]) || "{}";
+  const [allPosts, setAllPosts] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:5000/api/blog").then((posts) => {
       setAllPosts(posts.data);
@@ -44,7 +71,7 @@ const DisplayAllPosts = () => {
   // TITLE
   const [title, setTitle] = useState("");
   const savePostTitleToState = (event: {
-    target: { value: React.SetStateAction<string> };
+    target: { value: React.SetStateAction<string> },
   }) => {
     setTitle(event.target.value);
   };
@@ -52,7 +79,7 @@ const DisplayAllPosts = () => {
   // CONTENT
   const [content, setContent] = useState("");
   const savePostContentToState = (event: {
-    target: { value: React.SetStateAction<string> };
+    target: { value: React.SetStateAction<string> },
   }) => {
     setContent(event.target.value);
   };
@@ -66,7 +93,7 @@ const DisplayAllPosts = () => {
   // EDIT POST
   const [editPostId, setEditPostId] = useState("");
 
-  const editPost = (id: React.SetStateAction<string>) => {
+  const editPost = (id) => {
     setEditPostId(id);
     console.log(id);
     toggleModifyPostComponent();
@@ -79,7 +106,7 @@ const DisplayAllPosts = () => {
   };
 
   // DELETE POST RETURN
-  const deletePost = (id: any) => {
+  const deletePost = (id) => {
     const modifiedPost = allPosts.filter((eachPost) => {
       return eachPost.id !== id;
     });
@@ -87,7 +114,7 @@ const DisplayAllPosts = () => {
   };
 
   // SUBMIT UPDATE POST RETURN
-  const updatePost = (event: { preventDefault: () => void }) => {
+  const updatePost = (event) => {
     event.preventDefault();
     const updatedPost = allPosts.map((eachPost) => {
       if (eachPost.id === editPostId) {
@@ -102,12 +129,12 @@ const DisplayAllPosts = () => {
       console.log(eachPost);
       return eachPost;
     });
-    setAllPosts(updatedPost as any);
+    setAllPosts(updatedPost);
     toggleModifyPostComponent();
   };
 
   // SAVE POST
-  const savePost = async (event: { preventDefault: () => void }) => {
+  const savePost = async (event) => {
     event.preventDefault();
     const newPostResponse = await axios.post("http://localhost:5000/api/blog", {
       title,
@@ -184,10 +211,8 @@ const DisplayAllPosts = () => {
         // )
       }
       <CenterDiv>
-        <Button>
-          <Button variant="contained" onClick={toggleCreateNewPost}>
-            Create New Post
-          </Button>
+        <Button variant="contained" onClick={toggleCreateNewPost}>
+          Create New Post
         </Button>
       </CenterDiv>
     </>

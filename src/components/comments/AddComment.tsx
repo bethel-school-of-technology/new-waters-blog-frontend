@@ -7,21 +7,26 @@ import styled from "styled-components";
 const CenterDiv = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   // background: red;
 `;
 
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 35rem;
+const Button = styled.button`
+// display: flex;
+// justify-content: center;
+// align-item: center;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  padding: 5px 40px;
+  border-radius: 20px;
+  margin: 10px 0px;
+  cursor: pointer;
+  }
 `;
 
-const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  align-item: center;
-  width: 6rem;
-  // height: 1.5rem;
+const Corners = styled.div`
+  border-radius: 50px;
 `;
 
 const AddComment = () => {
@@ -35,28 +40,28 @@ const AddComment = () => {
   };
 
   return (
-    <div>
-      <Typography color="primary" variant="h5" align="center"></Typography>
+    <>
+      {/* <Typography color="primary" variant="h5" align="center"></Typography> */}
       <CenterDiv>
         <form onSubmit={handleSubmit}>
-          <Column>
-            <TextField
-              fullWidth
-              margin="normal"
-              autoFocus
-              placeholder="Leave your thoughts here"
-              // style={{ marginBottom: 5 }}
-              value={item}
-              variant="outlined"
-              onChange={(e) => setItem(e.target.value)}
-              minRows={78}
-              type="Comment textfield"
-            />
-            <Button>Submit</Button>
-          </Column>
+          {/* <Column> */}
+          <TextField
+            fullWidth
+            margin="normal"
+            autoFocus
+            placeholder="Leave your thoughts here"
+            // style={{ marginBottom: 5 }}
+            value={item}
+            variant="outlined"
+            onChange={(e) => setItem(e.target.value)}
+            minRows={78}
+            type=" textfield"
+          />
+          <Button>Submit</Button>
+          {/* </Column> */}
         </form>
       </CenterDiv>
-    </div>
+    </>
   );
 };
 

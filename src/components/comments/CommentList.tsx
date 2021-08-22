@@ -7,8 +7,9 @@ import styled from "styled-components";
 const CommentStyling = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-direction: column;
+  // background-color: red;
 `;
 
 const CommentList = () => {
@@ -23,9 +24,9 @@ const CommentList = () => {
     <div className="itemsContainer">
       <ul>
         <CommentStyling>
-          {items.map((item) => (
+          {items.map((item: string) => (
             <>
-              <Typography variant="h6">{name}</Typography>
+              <Typography variant="h5">{name}</Typography>
               <Comments key={item} item={item} />
             </>
           ))}

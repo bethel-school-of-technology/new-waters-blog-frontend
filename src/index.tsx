@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import "./index.css";
 import App from "./App";
-import Users from "./dataPull/Users";
+import Fonts from "./utils/fontStyles";
+
+// font-family: 'Roboto Condensed', sans-serif;
+// import Users from "./dataPull/Users";
 
 const getData = () => {
   fetch("http://localhost:5000/")
@@ -14,6 +16,7 @@ getData();
 ReactDOM.render(
   <React.StrictMode>
     <div>
+      <Fonts />
       <App />
       {/* <Users /> */}
     </div>

@@ -15,6 +15,24 @@ import AddComment from "./comments/AddComment";
 import CommentList from "./comments/CommentList";
 import styled from "styled-components";
 
+const Button = styled.button`
+// display: flex;
+// justify-content: center;
+// align-item: center;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  padding: 5px 40px;
+  border-radius: 20px;
+  margin: 10px 0px;
+  cursor: pointer;
+  }
+`;
+
+const Corners = styled.div`
+  border-radius: 50px;
+`;
+
 // DRAWER COMPONENT STYLING
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -88,12 +106,13 @@ function Drawer() {
           aria-controls="comment-drawer"
           id="comment-drawer"
         >
-            <Typography
+          <Button className={classes.heading}>Comment</Button>
+          {/* <Typography
               color="primary"
               className={classes.heading}
             >
-              Open to Comment
-            </Typography>
+              Comment
+            </Typography> */}
         </AccordionSummary>
         <AccordionDetails>
           <Context.Provider value={{ items, Dispatch }}>

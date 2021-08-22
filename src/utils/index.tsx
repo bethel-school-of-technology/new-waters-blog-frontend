@@ -1,17 +1,17 @@
-const TOKEN_KEY = "test";
+const TOKEN_KEY = "token";
 
 // NEEDS WORK
-export const register = () => {
-  localStorage.setItem(TOKEN_KEY, "string");
-  return false;
-};
+// export const register = () => {
+//   localStorage.setItem(TOKEN_KEY, "string");
+//   return false;
+// };
 
-export const isRegister = () => {
-  if (localStorage.getItem(TOKEN_KEY)) {
-    return true;
-  }
-  return false;
-};
+// export const isRegister = () => {
+//   if (localStorage.getItem(TOKEN_KEY)) {
+//     return true;
+//   }
+//   return false;
+// };
 //
 
 export const login = () => {
@@ -23,10 +23,10 @@ export const logout = () => {
 };
 
 export const isLogin = () => {
-  return true;
-  // if (localStorage.getItem(TOKEN_KEY)) {
-  //   return true;
-  // }
+  // return true;
+  if (localStorage.getItem(TOKEN_KEY)) {
+    return true;
+  }
 
   return false;
 };

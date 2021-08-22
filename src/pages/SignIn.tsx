@@ -41,20 +41,15 @@ export default class SignIn extends Component {
   };
 
   componentDidMount() {
-    let url = "http://localhost:5000/"
+    let url = "http://localhost:5000/";
     const password = localStorage.getItem("password") === "";
     const username = localStorage.getItem("username") === "";
     this.setState({ username, password });
-    const name = window.localStorage.getItem("username")
+    // const name = window.localStorage.getItem("username");
   }
-
 
   handleFormSubmit = (props: any) => {
     const { username, password } = this.state;
-    // localStorage.setItem("password", password as any);
-    // localStorage.setItem("username", password ? username : "");
-
-    // (localStorage.getItem(username as any && password as any) !== null)
 
     if (localStorage.setItem("username", password ? username : "") !== null)
       if (localStorage.setItem("password", password as string) !== null) {
@@ -125,96 +120,3 @@ export default class SignIn extends Component {
     );
   }
 }
-
-// function SignIn(props: any) {
-//   // const [username, setUsername] = useState("");
-//   // const [password, setPassword] = useState("");
-
-//   // const [loginStatus, setLoginStatus] = useState("");
-
-//   const state = {
-//     username: "",
-//     password: "",
-//   };
-
-//   const handleChange = (event: any) => {
-//     const input = event.target;
-//     const value = input.value;
-
-//     event.setState({ [input.username]: value });
-//     event.setState({ [input.password]: value });
-//   };
-
-//   const handleFormSubmit = (event: any) => {
-//     const { username, password } = event.state;
-//     localStorage.setItem("username", username);
-//     localStorage.setItem("password", password);
-//   };
-
-//   const handleLogin = () => {
-//     login();
-//     props.history.push("/");
-//   };
-
-//   // const login = () => {
-//   //   axios
-//   //   .post("http://localhost:5000/sign-in", {
-//   //     username: username,
-//   //     password: password,
-//   //   })
-//   //   .then((response) => {
-//   //     if (response.data.message) {
-//   //     } else {
-//   //       setLoginStatus(response.data[0].username);
-//   //       }
-//   //     });
-//   // };
-//   return (
-//     <form onSubmit={props.handleFormSubmit}>
-//       <Grid container justify="space-around">
-//         <Grid item>
-//           {/* Username */}
-//           <Grid item>
-//             <TextField
-//               name="username"
-//               id="username"
-//               label="Username"
-//               type="username"
-//               variant="outlined"
-//               // onChange={(e) => {
-//               //   setUsername(e.target.value);
-//               // }}
-//             />
-//           </Grid>
-
-//           {/* Password */}
-//           <Grid item>
-//             <TextField
-//               name="password"
-//               id="password"
-//               label="Password"
-//               type="password"
-//               variant="outlined"
-//               // onChange={(e) => {
-//               //   setPassword(e.target.value);
-//               // }}
-//             />
-//           </Grid>
-//           <Button
-//             type="submit"
-//             variant="contained"
-//             color="secondary"
-//             onClick={() => handleLogin()}
-//             // onClick={login}
-//             // disabled={isSubmitting}
-//           >
-//             Login
-//           </Button>
-//           <Link to="/sign-up">Sign Up / Register</Link>
-//         </Grid>
-//       </Grid>
-//     </form>
-//   );
-// }
-
-// export default SignIn;
