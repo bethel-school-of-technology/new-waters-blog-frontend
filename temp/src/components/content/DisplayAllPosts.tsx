@@ -4,7 +4,6 @@ import Post from "./Submitted";
 import ModifyPost from "./Edit";
 import styled from "styled-components";
 import { Typography, Button } from "@material-ui/core";
-import axios from "axios";
 
 const ButtonAdjuster = styled.div`
   padding-top: 2px;
@@ -31,20 +30,12 @@ const DisplayAllPosts = () => {
   const [isModifyPost, setIsModifyPost] = useState(false);
   const [editPostId, setEditPostId] = useState("");
 
-  useEffect(() => {
-    axios.get("http://localhost:5000/api/blog").then((posts) => {
-      setAllPosts(posts.data);
-    });
-  }, []);
-
   // Initialize useRef
   const getTitle = useRef();
   // const getImage = useRef();
   const getContent = useRef();
 
-  const savePostTitleToState = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
+  const savePostTitleToState = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setTitle(event.target.value);
   };
 
@@ -52,9 +43,7 @@ const DisplayAllPosts = () => {
   //     setImage(event.target.value);
   //   };
 
-  const savePostContentToState = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
+  const savePostContentToState = (event: { target: { value: React.SetStateAction<string>; }; }) => {
     setContent(event.target.value);
   };
 
@@ -82,7 +71,7 @@ const DisplayAllPosts = () => {
   };
 
   // SUBMIT UPDATE POST
-  const updatePost = (event: { preventDefault: () => void }) => {
+  const updatePost = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
     const updatedPost = allPosts.map((eachPost) => {
       if (eachPost.id === editPostId) {
@@ -102,13 +91,10 @@ const DisplayAllPosts = () => {
   };
 
   // SAVE POST
-  const savePost = async (event: { preventDefault: () => void }) => {
+  const savePost = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-    const newPostResponse = await axios.post("http://localhost:5000/api/blog", {
-      title,
-      content,
-    });
-    setAllPosts([newPostResponse.data, ...allPosts]);
+    const id = Date.now();
+    setAllPosts([...allPosts, { title, content, id }]);
     console.log(allPosts);
     setTitle("");
     // setImage("");
@@ -160,7 +146,7 @@ const DisplayAllPosts = () => {
 
   return (
     <>
-      {allPosts.length == 0 ? (
+      {!allPosts.length ? (
         <CenterDiv>
           {/* <div>{name}</div> */}
           <div>{/* <h3>There is nothing to see here!</h3> */}</div>
@@ -183,7 +169,7 @@ const DisplayAllPosts = () => {
       {/* <ButtonAdjuster> */}
       <CenterDiv>
         <Button>
-          <Button variant="contained" onClick={toggleCreateNewPost}>
+          <Button variant="contained" size="large" onClick={toggleCreateNewPost}>
             Create New Post
           </Button>
         </Button>

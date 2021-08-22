@@ -23,10 +23,9 @@ export const logout = () => {
 };
 
 export const isLogin = () => {
-  return true;
-  // if (localStorage.getItem(TOKEN_KEY)) {
-  //   return true;
-  // }
+  if (localStorage.getItem(TOKEN_KEY)) {
+    return true;
+  }
 
   return false;
 };
