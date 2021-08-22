@@ -23,57 +23,62 @@ const Column = styled.div`
 `;
 
 const DisplayAllPosts = () => {
-  const [title, setTitle] = useState("");
   //   const [image, setImage] = useState("");
-  const [content, setContent] = useState("");
-  const [allPosts, setAllPosts] = useState([]);
-  const [isCreateNewPost, setIsCreateNewPost] = useState(false);
-  const [isModifyPost, setIsModifyPost] = useState(false);
-  const [editPostId, setEditPostId] = useState("");
+  // const getImage = useRef();
+  //   const savePostImageToState = (event) => {
+  //     setImage(event.target.value);
+  //   };
 
+  // Initialize useRef
+  const getTitle = useRef();
+  const getContent = useRef();
+
+  // ALL POSTS
+  const [allPosts, setAllPosts] = useState([]) || "{}";
   useEffect(() => {
     axios.get("http://localhost:5000/api/blog").then((posts) => {
       setAllPosts(posts.data);
     });
   }, []);
 
-  // Initialize useRef
-  const getTitle = useRef();
-  // const getImage = useRef();
-  const getContent = useRef();
-
+  // TITLE
+  const [title, setTitle] = useState("");
   const savePostTitleToState = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
     setTitle(event.target.value);
   };
 
-  //   const savePostImageToState = (event) => {
-  //     setImage(event.target.value);
-  //   };
-
+  // CONTENT
+  const [content, setContent] = useState("");
   const savePostContentToState = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
     setContent(event.target.value);
   };
 
+  // CREATE NEW POST
+  const [isCreateNewPost, setIsCreateNewPost] = useState(false);
   const toggleCreateNewPost = () => {
     setIsCreateNewPost(!isCreateNewPost);
   };
 
   // EDIT POST
+  const [editPostId, setEditPostId] = useState("");
+
   const editPost = (id: React.SetStateAction<string>) => {
     setEditPostId(id);
     console.log(id);
     toggleModifyPostComponent();
   };
 
+  const [isModifyPost, setIsModifyPost] = useState(false);
+
   const toggleModifyPostComponent = () => {
     setIsModifyPost(!isModifyPost);
   };
 
-  // DELETE POST
+  // DELETE POST RETURN
   const deletePost = (id: any) => {
     const modifiedPost = allPosts.filter((eachPost) => {
       return eachPost.id !== id;
@@ -81,7 +86,7 @@ const DisplayAllPosts = () => {
     setAllPosts(modifiedPost);
   };
 
-  // SUBMIT UPDATE POST
+  // SUBMIT UPDATE POST RETURN
   const updatePost = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     const updatedPost = allPosts.map((eachPost) => {
@@ -89,8 +94,8 @@ const DisplayAllPosts = () => {
         console.log([eachPost.id, editPostId]);
         return {
           ...eachPost,
-          title: title || eachPost.title,
           //   image: image || eachPost.image,
+          title: title || eachPost.title,
           content: content || eachPost.content,
         };
       }
@@ -110,32 +115,30 @@ const DisplayAllPosts = () => {
     });
     setAllPosts([newPostResponse.data, ...allPosts]);
     console.log(allPosts);
-    setTitle("");
     // setImage("");
-    setContent("");
-    getTitle.current.value = "";
     // getImage.current.value = "";
+    setTitle("");
+    getTitle.current.value = "";
+    setContent("");
     getContent.current.value = "";
     toggleCreateNewPost();
   };
 
+  // SEE IN THE CONSOLE
   const name = window.localStorage.getItem("username");
-
   useEffect(() => {
     console.log(name);
   }, []);
-
-  // const name = window.localStorage.getItem(username)
 
   if (isCreateNewPost) {
     return (
       <>
         <CreateNewPost
-          savePostTitleToState={savePostTitleToState}
           //   savePostImageToState={savePostImageToState}
-          savePostContentToState={savePostContentToState}
-          getTitle={getTitle}
           //   getImage={getImage}
+          savePostTitleToState={savePostTitleToState}
+          getTitle={getTitle}
+          savePostContentToState={savePostContentToState}
           getContent={getContent}
           savePost={savePost}
         />
@@ -147,40 +150,39 @@ const DisplayAllPosts = () => {
     });
     return (
       <ModifyPost
-        title={post.title}
         // image={post.image}
-        content={post.content}
-        updatePost={updatePost}
-        savePostTitleToState={savePostTitleToState}
         // savePostImageToState={savePostImageToState}
+        title={post.title}
+        savePostTitleToState={savePostTitleToState}
+        content={post.content}
         savePostContentToState={savePostContentToState}
+        updatePost={updatePost}
       />
     );
   }
 
+  // MAIN RETURN - DISPLAY ALL POSTS
   return (
     <>
-      {allPosts.length == 0 ? (
-        <CenterDiv>
-          {/* <div>{name}</div> */}
-          <div>{/* <h3>There is nothing to see here!</h3> */}</div>
-        </CenterDiv>
-      ) : (
+      {
+        // allPosts.length == 0 ? (
+        //   <CenterDiv></CenterDiv>
+        // ) : (
         allPosts.map((eachPost) => {
           return (
             <Post
+              // image={eachPost.image}
               id={eachPost.id}
               key={eachPost.id}
               title={eachPost.title}
-              // image={eachPost.image}
               content={eachPost.content}
               editPost={editPost}
               deletePost={deletePost}
             />
           );
         })
-      )}
-      {/* <ButtonAdjuster> */}
+        // )
+      }
       <CenterDiv>
         <Button>
           <Button variant="contained" onClick={toggleCreateNewPost}>
@@ -188,7 +190,6 @@ const DisplayAllPosts = () => {
           </Button>
         </Button>
       </CenterDiv>
-      {/* </ButtonAdjuster> */}
     </>
   );
 };

@@ -1,20 +1,33 @@
 import React, { useEffect, useReducer } from "react";
-import styled from "styled-components";
+import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
 import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
   Box as MuiBox,
   Paper as MuiPaper,
-  Typography,
   Card as MuiCard,
-  makeStyles,
   CardContent,
 } from "@material-ui/core";
-import BlogForm from "./BlogForm";
-import CommentList from "./comments/CommentList";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Context from "./comments/Context";
 import Reducer from "./comments/Reducer";
+import styled from "styled-components";
 import AddComment from "./comments/AddComment";
-import DisplayAllPosts from "./content/DisplayAllPosts";
-import Drawer from "./Drawer";
+import CommentList from "./comments/CommentList";
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: "100%",
+    },
+    heading: {
+      fontSize: theme.typography.pxToRem(15),
+      fontWeight: theme.typography.fontWeightRegular,
+    },
+  })
+);
 
 const useStylesCard = makeStyles((theme) => ({
   root: {
@@ -70,8 +83,15 @@ const Card = styled(MuiCard)`
   padding: 1rem;
 `;
 
-const Blog = () => {
-  const classes = useStylesCard();
+const StyledTypography = styled(Typography)`
+  display: flex;
+  justify-content: center;
+`;
+
+function Drawer() {
+  const classes = useStyles();
+
+  const classesCard = useStylesCard();
 
   const name = window.localStorage.getItem("username");
   const title = window.localStorage.getItem("title");
@@ -93,42 +113,36 @@ const Blog = () => {
 
   useEffect(() => {
     console.log(name);
+    console.log(title);
     console.log(content);
     console.log(comments);
   }, []);
 
   return (
-    <>
-      <Box>
-        <Wrapper>
-          <Row>
-            <StyledPaper elevation={3}>
-              <Card className={classes.root}>
-                <DisplayAllPosts />
-              </Card>
-            </StyledPaper>
-
-            <StyledPaper elevation={3}>
-                <Context.Provider value={{ items, Dispatch }}>
-                  <Card className={classes.root}>
-                    <CardContent>
-                      <AddComment />
-                      <CommentList />
-                    </CardContent>
-                  </Card>
-                </Context.Provider>
-            </StyledPaper>
-
-            <StyledPaper elevation={3}>
-              <Card className={classes.root}>
-                <Drawer />
-              </Card>
-            </StyledPaper>
-          </Row>
-        </Wrapper>
-      </Box>
-    </>
+    <div className={classes.root}>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="comment-drawer"
+          id="comment-drawer"
+        >
+          <StyledTypography>
+            <Typography className={classes.heading}>Open to Comment</Typography>
+          </StyledTypography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Context.Provider value={{ items, Dispatch }}>
+            <Card className={classesCard.root}>
+              <CardContent>
+                <AddComment />
+                <CommentList />
+              </CardContent>
+            </Card>
+          </Context.Provider>
+        </AccordionDetails>
+      </Accordion>
+    </div>
   );
-};
+}
 
-export default Blog;
+export default Drawer;
