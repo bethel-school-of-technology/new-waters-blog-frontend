@@ -1,19 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import Context from "./Context";
 import Comments from "./Comments";
-import styled from "styled-components";
 import { Typography } from "@material-ui/core";
+import styled from "styled-components";
 
 const CommentStyling = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-`;
-
-const Name = styled.div`
-  // display: flex;
-  // justify-content: flex-start;
 `;
 
 const CommentList = () => {
@@ -24,17 +19,15 @@ const CommentList = () => {
     console.log(name);
   }, []);
 
-  
-
   return (
     <div className="itemsContainer">
       <ul>
         <CommentStyling>
           {items.map((item) => (
-            <Name>
+            <>
               <Typography variant="h6">{name}</Typography>
               <Comments key={item} item={item} />
-            </Name>
+            </>
           ))}
         </CommentStyling>
       </ul>

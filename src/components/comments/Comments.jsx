@@ -40,14 +40,7 @@ const CenterDiv = styled.div`
   justify-content: center;
 `;
 
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 0.25rem;
-`;
-
 const Comments = ({ item }: { item: string }) => {
-  ///const { Dispatch } = useContext(Context);
   const { Dispatch } = useContext(Context);
   return (
     <div>

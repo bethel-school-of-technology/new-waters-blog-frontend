@@ -10,7 +10,7 @@ const CenterDiv = styled.div`
 const Column = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 3rem;
 `;
 
 // Create New Post

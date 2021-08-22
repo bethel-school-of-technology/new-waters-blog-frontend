@@ -4,11 +4,10 @@ import {
   Box as MuiBox,
   Paper as MuiPaper,
   Typography,
-  Card as MuiCard,
+  Card,
   makeStyles,
   CardContent,
 } from "@material-ui/core";
-import BlogForm from "./BlogForm";
 import CommentList from "./comments/CommentList";
 import Context from "./comments/Context";
 import Reducer from "./comments/Reducer";
@@ -66,9 +65,9 @@ const StyledPaper = styled(MuiPaper)`
   margin: 1rem;
 `;
 
-const Card = styled(MuiCard)`
-  padding: 1rem;
-`;
+// const Card = styled(MuiCard)`
+//   padding: 1rem;
+// `;
 
 const Blog = () => {
   const classes = useStylesCard();
@@ -81,7 +80,7 @@ const Blog = () => {
   const [items, Dispatch] = useReducer(Reducer, []);
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("items"));
+    const items = JSON.parse(localStorage.getItem("items") || "{}");
     if (items) {
       Dispatch({ type: "POPULATE", items });
     }
@@ -93,6 +92,7 @@ const Blog = () => {
 
   useEffect(() => {
     console.log(name);
+    console.log(title);
     console.log(content);
     console.log(comments);
   }, []);
@@ -108,7 +108,7 @@ const Blog = () => {
               </Card>
             </StyledPaper>
 
-            <StyledPaper elevation={3}>
+            {/* <StyledPaper elevation={3}>
                 <Context.Provider value={{ items, Dispatch }}>
                   <Card className={classes.root}>
                     <CardContent>
@@ -117,7 +117,7 @@ const Blog = () => {
                     </CardContent>
                   </Card>
                 </Context.Provider>
-            </StyledPaper>
+            </StyledPaper> */}
 
             <StyledPaper elevation={3}>
               <Card className={classes.root}>

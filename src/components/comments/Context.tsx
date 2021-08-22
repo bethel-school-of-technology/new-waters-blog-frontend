@@ -1,10 +1,9 @@
 import React from "react";
-import { string } from "yup";
 
-interface Action {
-  type: string;
-  itemToBeDeleted: string;
-}
+// interface Action {
+//   type: string;
+//   itemToBeDeleted: string;
+// }
 
 // const Context = React.createContext({
 //   items: [],

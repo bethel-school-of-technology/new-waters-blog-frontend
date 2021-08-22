@@ -5,18 +5,17 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
-  Box as MuiBox,
-  Paper as MuiPaper,
-  Card as MuiCard,
+  Card,
   CardContent,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Context from "./comments/Context";
 import Reducer from "./comments/Reducer";
-import styled from "styled-components";
 import AddComment from "./comments/AddComment";
 import CommentList from "./comments/CommentList";
+import styled from "styled-components";
 
+// DRAWER COMPONENT STYLING
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -29,6 +28,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+// COMMENT COMPONENT STYLING
 const useStylesCard = makeStyles((theme) => ({
   root: {
     minWidth: 616,
@@ -50,44 +50,6 @@ const useStylesCard = makeStyles((theme) => ({
   },
 }));
 
-const Box = styled(MuiBox)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 3rem;
-`;
-
-const Wrapper = styled(MuiPaper)`
-  display: flex  
-  padding: 1rem 3rem;
-  margin: 2rem;
-  max-width: 85rem;
-  `;
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 2rem;
-  max-width: 85rem;
-  min-width: 50rem;
-`;
-
-const StyledPaper = styled(MuiPaper)`
-  display: flex;
-  margin: 1rem;
-`;
-
-const Card = styled(MuiCard)`
-  padding: 1rem;
-`;
-
-const StyledTypography = styled(Typography)`
-  display: flex;
-  justify-content: center;
-`;
-
 function Drawer() {
   const classes = useStyles();
 
@@ -101,7 +63,7 @@ function Drawer() {
   const [items, Dispatch] = useReducer(Reducer, []);
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("items"));
+    const items = JSON.parse(localStorage.getItem("items") || "{}");
     if (items) {
       Dispatch({ type: "POPULATE", items });
     }
@@ -126,9 +88,12 @@ function Drawer() {
           aria-controls="comment-drawer"
           id="comment-drawer"
         >
-          <StyledTypography>
-            <Typography className={classes.heading}>Open to Comment</Typography>
-          </StyledTypography>
+            <Typography
+              color="primary"
+              className={classes.heading}
+            >
+              Open to Comment
+            </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Context.Provider value={{ items, Dispatch }}>

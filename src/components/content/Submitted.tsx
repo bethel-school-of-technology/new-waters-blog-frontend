@@ -1,6 +1,7 @@
 import { Typography } from "@material-ui/core";
 import { useEffect } from "react";
 import styled from "styled-components";
+import Drawer from "../Drawer";
 
 const CenterDiv = styled.div`
   display: flex;
@@ -13,19 +14,6 @@ const ButtonPadding = styled.div`
 
 const Padding = styled.div`
   padding: 1rem;
-`;
-
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-`;
-
-const ButtonDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 100px;
-  padding: 5px;
 `;
 
 const Submitted = (props: any) => {
@@ -54,17 +42,14 @@ const Submitted = (props: any) => {
           <Typography variant="body1" display="block" align="center">
             {content}
           </Typography>
+          <Drawer />
           <div>
             <CenterDiv>
               <ButtonPadding>
-                {/* <ButtonDiv> */}
                 <button onClick={() => editPost(id)}>Edit</button>
               </ButtonPadding>
               <ButtonPadding>
-                {/* </ButtonDiv> */}
-                {/* <ButtonDiv> */}
                 <button onClick={() => deletePost(id)}>Delete</button>
-                {/* </ButtonDiv> */}
               </ButtonPadding>
             </CenterDiv>
           </div>
