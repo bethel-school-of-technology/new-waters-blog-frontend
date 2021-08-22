@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
 // COMMENT COMPONENT STYLING
 const useStylesCard = makeStyles((theme) => ({
   root: {
-    minWidth: 616,
+    minWidth: 585,
     maxWidth: 225,
   },
   media: {
