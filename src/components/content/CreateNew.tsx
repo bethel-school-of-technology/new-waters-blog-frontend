@@ -50,9 +50,9 @@ const CreateNew = (props: any) => {
             ></textarea>
             <Button>Save Post</Button>
           </Column>
-          <a href="localhost:3000/" target="home">
+          {/* <a href="localhost:3000/" target="home">
             <Button> Back </Button>
-          </a>
+          </a> */}
         </form>
       </CenterDiv>
     </>

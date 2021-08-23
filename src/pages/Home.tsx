@@ -36,20 +36,9 @@ const Button = styled.button`
 
 // LOGOUT BUTTON & FUNCTIONALITY
 const UserLogout = () => {
-  // const handleLogout = () => {
-  //   logout();
-  //   window.location.reload();
-  // };
-
   const handleLogout = () => {
-    // localStorage.clearToken();
-    // if (localStorage.getItem()) {
-    //   //check something in local storage so you can know
-    //   // if you should reload or not
-    //   logout();
-    //   window.location.reload();
-    // }
-    // return "you were logout";
+    logout();
+    window.location.reload();
   };
 
   return (

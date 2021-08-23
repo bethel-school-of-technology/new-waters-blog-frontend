@@ -25,8 +25,10 @@ const Button = styled.button`
   }
 `;
 
-const Corners = styled.div`
-  border-radius: 50px;
+const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 35rem;
 `;
 
 const AddComment = () => {

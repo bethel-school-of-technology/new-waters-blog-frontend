@@ -19,20 +19,9 @@ import axios from "axios";
 //   target: { value: React.SetStateAction<string>
 // }
 
-const ButtonAdjuster = styled.div`
-  padding-top: 2px;
-  padding-left: 8px;
-`;
-
 const CenterDiv = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
 `;
 
 const Button = styled.button`
@@ -65,13 +54,14 @@ const DisplayAllPosts = () => {
   useEffect(() => {
     axios.get("http://localhost:5000/api/blog").then((posts) => {
       setAllPosts(posts.data);
+      console.log("ALLPOSTS", posts.data);
     });
   }, []);
 
   // TITLE
   const [title, setTitle] = useState("");
   const savePostTitleToState = (event: {
-    target: { value: React.SetStateAction<string> },
+    target: { value: React.SetStateAction<string> };
   }) => {
     setTitle(event.target.value);
   };
@@ -79,7 +69,7 @@ const DisplayAllPosts = () => {
   // CONTENT
   const [content, setContent] = useState("");
   const savePostContentToState = (event: {
-    target: { value: React.SetStateAction<string> },
+    target: { value: React.SetStateAction<string> };
   }) => {
     setContent(event.target.value);
   };
@@ -93,7 +83,7 @@ const DisplayAllPosts = () => {
   // EDIT POST
   const [editPostId, setEditPostId] = useState("");
 
-  const editPost = (id) => {
+  const editPost = (id: React.SetStateAction<string>) => {
     setEditPostId(id);
     console.log(id);
     toggleModifyPostComponent();
@@ -106,35 +96,40 @@ const DisplayAllPosts = () => {
   };
 
   // DELETE POST RETURN
-  const deletePost = (id) => {
-    const modifiedPost = allPosts.filter((eachPost) => {
-      return eachPost.id !== id;
-    });
-    setAllPosts(modifiedPost);
+  const deletePost = async (id: any) => {
+    const response = await axios.delete(`http://localhost:5000/api/blog/${id}`);
+
+    if ((response.status = 200)) {
+      const modifiedPosts = allPosts.filter((post) => {
+        return post._id !== id; // whats with the underscore
+      });
+
+      setAllPosts(modifiedPosts);
+    }
   };
 
-  // SUBMIT UPDATE POST RETURN
-  const updatePost = (event) => {
+  // EDIT POST REQUEST
+  const updatePost = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    const updatedPost = allPosts.map((eachPost) => {
-      if (eachPost.id === editPostId) {
-        console.log([eachPost.id, editPostId]);
-        return {
-          ...eachPost,
-          //   image: image || eachPost.image,
-          title: title || eachPost.title,
-          content: content || eachPost.content,
-        };
+    const updatedPost = await axios.put(
+      `http://localhost:5000/api/blog/${editPostId}`,
+      {
+        title,
+        content,
       }
-      console.log(eachPost);
-      return eachPost;
+    );
+    const updatedAllPosts = allPosts.map((post) => {
+      if (post._id === updatedPost.data._id) {
+        return updatedPost.data;
+      }
+      return post;
     });
-    setAllPosts(updatedPost);
+    setAllPosts(updatedAllPosts as any);
     toggleModifyPostComponent();
   };
 
   // SAVE POST
-  const savePost = async (event) => {
+  const savePost = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     const newPostResponse = await axios.post("http://localhost:5000/api/blog", {
       title,
@@ -173,7 +168,7 @@ const DisplayAllPosts = () => {
     );
   } else if (isModifyPost) {
     const post = allPosts.find((post) => {
-      return post.id === editPostId;
+      return post._id === editPostId;
     });
     return (
       <ModifyPost
@@ -199,10 +194,10 @@ const DisplayAllPosts = () => {
           return (
             <Post
               // image={eachPost.image}
-              id={eachPost.id}
-              key={eachPost.id}
-              title={eachPost.title}
-              content={eachPost.content}
+              id={eachPost._id}
+              key={eachPost._id}
+              title={eachPost.title || ""}
+              content={eachPost.content || ""}
               editPost={editPost}
               deletePost={deletePost}
             />
@@ -211,7 +206,7 @@ const DisplayAllPosts = () => {
         // )
       }
       <CenterDiv>
-        <Button variant="contained" onClick={toggleCreateNewPost}>
+        <Button onClick={toggleCreateNewPost}>
           Create New Post
         </Button>
       </CenterDiv>

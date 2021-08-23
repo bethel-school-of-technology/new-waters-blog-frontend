@@ -29,10 +29,6 @@ const Button = styled.button`
   }
 `;
 
-const Corners = styled.div`
-  border-radius: 50px;
-`;
-
 // DRAWER COMPONENT STYLING
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

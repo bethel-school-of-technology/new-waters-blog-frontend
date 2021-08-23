@@ -28,7 +28,6 @@ const Button = styled.button`
 `;
 
 const Edit = (props: any) => {
-
   return (
     <>
       <CenterDiv>

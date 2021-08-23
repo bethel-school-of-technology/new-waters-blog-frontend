@@ -55,14 +55,6 @@ const Button = styled.button`
   }
 `;
 
-// const commentContext = React.createContext<string | undefined>(undefined);
-
-// interface CommentState {
-//   // set the type of state you want to handle with context e.g.
-//   type: string | null;
-//   itemToBeDeleted: any | null;
-// }
-
 const Comments = ({ item }: { item: string }) => {
   const { Dispatch } = useContext(Context);
   return (
