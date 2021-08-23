@@ -9,7 +9,6 @@ const borderProps = {
   borderColor: "text.primary",
   m: 1,
   border: 3,
-  // style: { width: "20rem", height: "10rem" },
 };
 
 const CommentStyling = styled.div`

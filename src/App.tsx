@@ -7,7 +7,6 @@ import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 
 function App(props: any) {
-
   return (
     <>
       <Router>
@@ -24,8 +23,8 @@ function App(props: any) {
             path="/sign-in"
             exact
           />
-          <PublicRoute restricted={true} component={Home} path="/" exact />
-          {/* <PrivateRoute component={Home} path="/" exact /> */}
+          {/* <PublicRoute restricted={true} component={Home} path="/" exact /> */}
+          <PrivateRoute component={Home} path="/" exact />
         </Switch>
       </Router>
     </>

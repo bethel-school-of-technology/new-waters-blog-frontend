@@ -62,7 +62,7 @@ function Home() {
         <RowToolbar>
           {/* TITLE */}
           <Column>
-            <Typography variant="h4">New Waters Blog</Typography>
+            <Typography variant="h3">New Waters Blog</Typography>
             <Typography variant="h6">
               New's that brings life in the midst of chaos
             </Typography>

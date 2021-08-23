@@ -47,7 +47,7 @@ const DisplayAllPosts = () => {
 
   // ALL POSTS
   const [allPosts, setAllPosts] = useState([]);
-  
+
   useEffect(() => {
     axios.get("http://localhost:5000/api/blog").then((posts) => {
       setAllPosts(posts.data);
@@ -57,7 +57,7 @@ const DisplayAllPosts = () => {
 
   // TITLE
   const [title, setTitle] = useState("");
-  
+
   const savePostTitleToState = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
@@ -66,7 +66,7 @@ const DisplayAllPosts = () => {
 
   // CONTENT
   const [content, setContent] = useState("");
-  
+
   const savePostContentToState = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {
@@ -75,7 +75,7 @@ const DisplayAllPosts = () => {
 
   // CREATE NEW POST
   const [isCreateNewPost, setIsCreateNewPost] = useState(false);
-  
+
   const toggleCreateNewPost = () => {
     setIsCreateNewPost(!isCreateNewPost);
   };
@@ -101,6 +101,7 @@ const DisplayAllPosts = () => {
 
     if ((response.status = 200)) {
       const modifiedPosts = allPosts.filter((post) => {
+        // @ts-ignore
         return post._id !== id;
       });
       setAllPosts(modifiedPosts);
@@ -110,7 +111,7 @@ const DisplayAllPosts = () => {
   // EDIT POST REQUEST
   const updatePost = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    
+
     const updatedPost = await axios.put(
       `http://localhost:5000/api/blog/${editPostId}`,
       {
@@ -118,54 +119,60 @@ const DisplayAllPosts = () => {
         content,
       }
     );
-    
+
     const updatedAllPosts = allPosts.map((post) => {
+      // 1
+      // @ts-ignore
       if (post._id === updatedPost.data._id) {
         return updatedPost.data;
       }
       return post;
     });
-   
+
     setAllPosts(updatedAllPosts as any);
-   
+
     toggleModifyPostComponent();
   };
 
   // SAVE POST
   const savePost = async (event: { preventDefault: () => void }) => {
-    
     event.preventDefault();
-    
+
     const newPostResponse = await axios.post("http://localhost:5000/api/blog", {
       title,
       content,
     });
-    
+
+    // 2
+    // @ts-ignore
     setAllPosts([newPostResponse.data, ...allPosts]);
-    
+
     console.log(allPosts);
-   
+
     // setImage("");
     // getImage.current.value = "";
-    
+
     setTitle("");
+    // 3
+    // @ts-ignore
     getTitle.current.value = "";
-    
+
     setContent("");
+    // 4
+    // @ts-ignore
     getContent.current.value = "";
-   
+
     toggleCreateNewPost();
   };
 
   // SEE IN THE CONSOLE
   const name = window.localStorage.getItem("username");
-  
+
   useEffect(() => {
     console.log(name);
   }, []);
 
   if (isCreateNewPost) {
-   
     return (
       <>
         <CreateNewPost
@@ -180,18 +187,21 @@ const DisplayAllPosts = () => {
       </>
     );
   } else if (isModifyPost) {
-    
     const post = allPosts.find((post) => {
-      
+      // 5
+      // @ts-ignore
       return post._id === editPostId;
     });
-    
+
     return (
       <ModifyPost
         // image={post.image}
         // savePostImageToState={savePostImageToState}
+        // @ts-ignore
         title={post.title}
         savePostTitleToState={savePostTitleToState}
+        // 6
+        // @ts-ignore
         content={post.content}
         savePostContentToState={savePostContentToState}
         updatePost={updatePost}
@@ -203,13 +213,20 @@ const DisplayAllPosts = () => {
   return (
     <>
       {allPosts.map((eachPost) => {
-        
         return (
           <Post
             // image={eachPost.image}
+            // 7
+            // @ts-ignore
             id={eachPost._id}
+            // 8
+            // @ts-ignore
             key={eachPost._id}
+            // 9
+            // @ts-ignore
             title={eachPost.title || ""}
+            // 10
+            // @ts-ignore
             content={eachPost.content || ""}
             editPost={editPost}
             deletePost={deletePost}
