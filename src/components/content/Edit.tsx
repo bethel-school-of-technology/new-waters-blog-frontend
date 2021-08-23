@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import styled from "styled-components";
 
 const CenterDiv = styled.div`
@@ -13,8 +13,21 @@ const Column = styled.div`
   padding: 1rem;
 `;
 
-const Edit = (props: any) => {
+const Button = styled.button`
+// display: flex;
+// justify-content: center;
+// align-item: center;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 10px 60px;
+  border-radius: 20px;
+  margin: 10px 0px;
+  cursor: pointer;
+  }
+`;
 
+const Edit = (props: any) => {
   return (
     <>
       <CenterDiv>

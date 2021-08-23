@@ -19,6 +19,21 @@ const Padding = styled.div`
 const Submitted = (props: any) => {
   const { title, content, editPost, id, deletePost } = props;
 
+  // MICHEAL
+  // useEffect(() => {
+  //   localStorage.setItem("content", JSON.stringify(content));
+  // }, [content]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("title", JSON.stringify(title));
+  // }, [title]);
+  // MICHEAL
+
+  // id dont know
+  useEffect(() => {
+    console.log("POSTSSS", props);
+  }, []);
+
   useEffect(() => {
     localStorage.setItem("content", JSON.stringify(content));
   }, [content]);

@@ -7,9 +7,9 @@ import SignUp from "./pages/SignUp";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 
-import createHashHistory from 'history/createHashHistory';
+// import createHashHistory from 'history/createHashHistory';
 
-const hashHistory = createHashHistory({ basename: process.env.PUBLIC_URL });
+// const hashHistory = createHashHistory({ basename: process.env.PUBLIC_URL });
 
 // class App extends Component {
 function App(props: any) {

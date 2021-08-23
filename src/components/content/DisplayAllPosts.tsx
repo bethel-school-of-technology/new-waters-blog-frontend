@@ -3,23 +3,39 @@ import CreateNewPost from "./CreateNew";
 import Post from "./Submitted";
 import ModifyPost from "./Edit";
 import styled from "styled-components";
-import { Typography, Button } from "@material-ui/core";
+// import { Typography, Button } from "@material-ui/core";
 import axios from "axios";
 
-const ButtonAdjuster = styled.div`
-  padding-top: 2px;
-  padding-left: 8px;
-`;
+// interface ID {
+//   id: string | null
+// }
+// interface Value {
+//   value: string | null
+// }
+// interface Event {
+//   event: { preventDefault: () => void }
+// }
+// interface Target {
+//   target: { value: React.SetStateAction<string>
+// }
 
 const CenterDiv = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
+const Button = styled.button`
+// display: flex;
+// justify-content: center;
+// align-item: center;
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  padding: 10px 60px;
+  border-radius: 20px;
+  margin: 10px 0px;
+  cursor: pointer;
+  }
 `;
 
 const DisplayAllPosts = () => {
@@ -34,10 +50,11 @@ const DisplayAllPosts = () => {
   const getContent = useRef();
 
   // ALL POSTS
-  const [allPosts, setAllPosts] = useState([]) || "{}";
+  const [allPosts, setAllPosts] = useState([]);
   useEffect(() => {
     axios.get("http://localhost:5000/api/blog").then((posts) => {
       setAllPosts(posts.data);
+      console.log("ALLPOSTS", posts.data);
     });
   }, []);
 
@@ -79,30 +96,35 @@ const DisplayAllPosts = () => {
   };
 
   // DELETE POST RETURN
-  const deletePost = (id: any) => {
-    const modifiedPost = allPosts.filter((eachPost) => {
-      return eachPost.id !== id;
-    });
-    setAllPosts(modifiedPost);
+  const deletePost = async (id: any) => {
+    const response = await axios.delete(`http://localhost:5000/api/blog/${id}`);
+
+    if ((response.status = 200)) {
+      const modifiedPosts = allPosts.filter((post) => {
+        return post._id !== id; // whats with the underscore
+      });
+
+      setAllPosts(modifiedPosts);
+    }
   };
 
-  // SUBMIT UPDATE POST RETURN
-  const updatePost = (event: { preventDefault: () => void }) => {
+  // EDIT POST REQUEST
+  const updatePost = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    const updatedPost = allPosts.map((eachPost) => {
-      if (eachPost.id === editPostId) {
-        console.log([eachPost.id, editPostId]);
-        return {
-          ...eachPost,
-          //   image: image || eachPost.image,
-          title: title || eachPost.title,
-          content: content || eachPost.content,
-        };
+    const updatedPost = await axios.put(
+      `http://localhost:5000/api/blog/${editPostId}`,
+      {
+        title,
+        content,
       }
-      console.log(eachPost);
-      return eachPost;
+    );
+    const updatedAllPosts = allPosts.map((post) => {
+      if (post._id === updatedPost.data._id) {
+        return updatedPost.data;
+      }
+      return post;
     });
-    setAllPosts(updatedPost as any);
+    setAllPosts(updatedAllPosts as any);
     toggleModifyPostComponent();
   };
 
@@ -146,7 +168,7 @@ const DisplayAllPosts = () => {
     );
   } else if (isModifyPost) {
     const post = allPosts.find((post) => {
-      return post.id === editPostId;
+      return post._id === editPostId;
     });
     return (
       <ModifyPost
@@ -172,10 +194,10 @@ const DisplayAllPosts = () => {
           return (
             <Post
               // image={eachPost.image}
-              id={eachPost.id}
-              key={eachPost.id}
-              title={eachPost.title}
-              content={eachPost.content}
+              id={eachPost._id}
+              key={eachPost._id}
+              title={eachPost.title || ""}
+              content={eachPost.content || ""}
               editPost={editPost}
               deletePost={deletePost}
             />
@@ -184,10 +206,8 @@ const DisplayAllPosts = () => {
         // )
       }
       <CenterDiv>
-        <Button>
-          <Button variant="contained" onClick={toggleCreateNewPost}>
-            Create New Post
-          </Button>
+        <Button onClick={toggleCreateNewPost}>
+          Create New Post
         </Button>
       </CenterDiv>
     </>

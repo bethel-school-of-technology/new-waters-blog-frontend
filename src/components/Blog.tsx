@@ -41,6 +41,7 @@ const Box = styled(MuiBox)`
   flex-direction: column;
   align-items: center;
   margin-top: 3rem;
+  // background-color: red;
 `;
 
 const Wrapper = styled(MuiPaper)`
@@ -48,6 +49,8 @@ const Wrapper = styled(MuiPaper)`
   padding: 1rem 3rem;
   margin: 2rem;
   max-width: 85rem;
+  border-radius: 50px;
+  background-color: black;
   `;
 
 const Row = styled.div`
