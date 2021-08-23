@@ -1,8 +1,16 @@
 import React, { useContext, useEffect } from "react";
 import Context from "./Context";
 import Comments from "./Comments";
-import { Typography } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import styled from "styled-components";
+
+const borderProps = {
+  bgcolor: "background.paper",
+  borderColor: "text.primary",
+  m: 1,
+  border: 3,
+  // style: { width: "20rem", height: "10rem" },
+};
 
 const CommentStyling = styled.div`
   display: flex;
@@ -26,8 +34,15 @@ const CommentList = () => {
         <CommentStyling>
           {items.map((item: string) => (
             <>
-              <Typography variant="h5">{name}</Typography>
-              <Comments key={item} item={item} />
+              <Box
+                borderRadius={16}
+                {...borderProps}
+                display="flex"
+                justifyContent="center"
+              >
+                {/* <Typography variant="h5">{name}</Typography> */}
+                <Comments key={item} item={item} />
+              </Box>
             </>
           ))}
         </CommentStyling>

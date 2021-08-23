@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import "./index.css";
 import App from "./App";
-import Users from "./dataPull/Users";
+import "@fontsource/roboto";
 
 const getData = () => {
   fetch("http://localhost:5000/")
@@ -15,7 +14,6 @@ ReactDOM.render(
   <React.StrictMode>
     <div>
       <App />
-      {/* <Users /> */}
     </div>
   </React.StrictMode>,
   document.getElementById("root")

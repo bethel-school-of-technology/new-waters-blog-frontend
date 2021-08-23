@@ -3,17 +3,17 @@ import styled from "styled-components";
 import {
   Box as MuiBox,
   Paper as MuiPaper,
-  Typography,
   Card,
   makeStyles,
-  CardContent,
+  // Typography,
+  // CardContent,
 } from "@material-ui/core";
-import CommentList from "./comments/CommentList";
-import Context from "./comments/Context";
 import Reducer from "./comments/Reducer";
-import AddComment from "./comments/AddComment";
 import DisplayAllPosts from "./content/DisplayAllPosts";
-import Drawer from "./Drawer";
+// import Context from "./comments/Context";
+// import AddComment from "./comments/AddComment";
+// import CommentList from "./comments/CommentList";
+// import Drawer from "./Drawer";
 
 const useStylesCard = makeStyles((theme) => ({
   root: {
@@ -68,10 +68,6 @@ const StyledPaper = styled(MuiPaper)`
   margin: 1rem;
 `;
 
-// const Card = styled(MuiCard)`
-//   padding: 1rem;
-// `;
-
 const Blog = () => {
   const classes = useStylesCard();
 
@@ -105,6 +101,7 @@ const Blog = () => {
       <Box>
         <Wrapper>
           <Row>
+            <div>Hi</div>
             <StyledPaper elevation={3}>
               <Card className={classes.root}>
                 <DisplayAllPosts />
@@ -112,21 +109,10 @@ const Blog = () => {
             </StyledPaper>
 
             {/* <StyledPaper elevation={3}>
-                <Context.Provider value={{ items, Dispatch }}>
-                  <Card className={classes.root}>
-                    <CardContent>
-                      <AddComment />
-                      <CommentList />
-                    </CardContent>
-                  </Card>
-                </Context.Provider>
-            </StyledPaper> */}
-
-            <StyledPaper elevation={3}>
               <Card className={classes.root}>
                 <Drawer />
               </Card>
-            </StyledPaper>
+            </StyledPaper> */}
           </Row>
         </Wrapper>
       </Box>

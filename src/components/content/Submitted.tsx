@@ -1,3 +1,4 @@
+import React from "react";
 import { Typography } from "@material-ui/core";
 import { useEffect } from "react";
 import styled from "styled-components";
@@ -17,19 +18,8 @@ const Padding = styled.div`
 `;
 
 const Submitted = (props: any) => {
-  const { title, content, editPost, id, deletePost } = props;
+  const { items, title, content, editPost, id, deletePost } = props;
 
-  // MICHEAL
-  // useEffect(() => {
-  //   localStorage.setItem("content", JSON.stringify(content));
-  // }, [content]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("title", JSON.stringify(title));
-  // }, [title]);
-  // MICHEAL
-
-  // id dont know
   useEffect(() => {
     console.log("POSTSSS", props);
   }, []);
@@ -42,9 +32,9 @@ const Submitted = (props: any) => {
     localStorage.setItem("title", JSON.stringify(title));
   }, [title]);
 
-  // useEffect(() => {
-  //   localStorage.setItem("edit", JSON.stringify(editPost));
-  // }, [editPost]);
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
   return (
     <>

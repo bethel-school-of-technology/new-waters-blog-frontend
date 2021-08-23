@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import { AppBar, Typography, CssBaseline, Toolbar } from "@material-ui/core";
 import styled from "styled-components";
 import Blog from "../components/Blog";
-// import { Button } from "@material-ui/core";
 import { logout } from "../utils";
 
 const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+`;
+
+const LogoutSpace = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -68,12 +70,16 @@ function Home() {
               New's that brings life in the midst of chaos
             </Typography>
           </Column>
-          {/* <Typography variant="h3">Take it away {name}!</Typography> */}
+
           {/* LOGOUT BUTTON */}
-          <UserLogout />
+          <LogoutSpace>
+            <UserLogout />
+            <Typography variant="h5">Welcome {name}!</Typography>
+          </LogoutSpace>
         </RowToolbar>
       </AppBar>
       <Toolbar id="return-to-top" />
+
       {/* BLOG */}
       <Blog />
     </React.Fragment>

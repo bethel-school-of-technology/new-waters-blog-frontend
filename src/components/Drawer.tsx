@@ -4,9 +4,9 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Typography,
   Card,
   CardContent,
+  Box,
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Context from "./comments/Context";
@@ -16,9 +16,6 @@ import CommentList from "./comments/CommentList";
 import styled from "styled-components";
 
 const Button = styled.button`
-// display: flex;
-// justify-content: center;
-// align-item: center;
   background-color: black;
   color: white;
   font-size: 15px;
@@ -28,6 +25,15 @@ const Button = styled.button`
   cursor: pointer;
   }
 `;
+
+// BORDER STYLING
+const borderProps = {
+  bgcolor: "background.paper",
+  borderColor: "text.primary",
+  // m: 1,
+  border: 3,
+  // style: { width: '5rem', height: '5rem' },
+};
 
 // DRAWER COMPONENT STYLING
 const useStyles = makeStyles((theme: Theme) =>
@@ -66,15 +72,14 @@ const useStylesCard = makeStyles((theme) => ({
 
 function Drawer() {
   const classes = useStyles();
-
   const classesCard = useStylesCard();
+
+  const [items, Dispatch] = useReducer(Reducer, []);
 
   const name = window.localStorage.getItem("username");
   const title = window.localStorage.getItem("title");
   const content = window.localStorage.getItem("content");
   const comments = window.localStorage.getItem("items");
-
-  const [items, Dispatch] = useReducer(Reducer, []);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem("items") || "{}");
@@ -95,33 +100,29 @@ function Drawer() {
   }, []);
 
   return (
-    <div className={classes.root}>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="comment-drawer"
-          id="comment-drawer"
-        >
-          <Button className={classes.heading}>Comment</Button>
-          {/* <Typography
-              color="primary"
-              className={classes.heading}
-            >
-              Comment
-            </Typography> */}
-        </AccordionSummary>
-        <AccordionDetails>
-          <Context.Provider value={{ items, Dispatch }}>
-            <Card className={classesCard.root}>
-              <CardContent>
-                <AddComment />
-                <CommentList />
-              </CardContent>
-            </Card>
-          </Context.Provider>
-        </AccordionDetails>
-      </Accordion>
-    </div>
+    <Box borderRadius="borderRadius" {...borderProps}>
+      <div className={classes.root}>
+        <Accordion>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="comment-drawer"
+            id="comment-drawer"
+          >
+            <Button className={classes.heading}>Comment</Button>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Context.Provider value={{ items, Dispatch }}>
+              <Card raised className={classesCard.root}>
+                <CardContent>
+                  <AddComment />
+                  <CommentList />
+                </CardContent>
+              </Card>
+            </Context.Provider>
+          </AccordionDetails>
+        </Accordion>
+      </div>
+    </Box>
   );
 }
 
