@@ -64,7 +64,7 @@ const SignIn = () => {
           <Typography color="error">Wrong password or username!</Typography>
         )}
         <Grid container justify="space-around">
-          <Typography>Sign In</Typography>
+          <Typography variant="h3">Sign In</Typography>
           <Grid container justify="space-around">
             <Grid item>
               {/* USERNAME */}

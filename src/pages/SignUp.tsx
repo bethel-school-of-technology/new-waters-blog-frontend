@@ -67,7 +67,7 @@ const SignUp = () => {
           <Typography color="error">Something went wrong!</Typography>
         )}
         <Grid container justify="space-around">
-          <Typography>Register</Typography>
+          <Typography variant="h3">Sign Up</Typography>
           <Grid container justify="space-around">
             <Grid item>
               <Grid item>
