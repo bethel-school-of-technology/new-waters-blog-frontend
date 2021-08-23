@@ -23,11 +23,8 @@ const RowToolbar = styled(Toolbar)`
 `;
 
 const Button = styled.button`
-// display: flex;
-// justify-content: center;
-// align-item: center;
-  background-color: white;
-  color: black;
+  background-color: red;
+  color: white;
   font-size: 20px;
   padding: 10px 40px;
   border-radius: 20px;

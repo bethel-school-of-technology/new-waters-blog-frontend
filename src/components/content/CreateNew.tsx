@@ -1,5 +1,5 @@
-import { Typography } from "@material-ui/core";
 import React from "react";
+import { Typography } from "@material-ui/core";
 import styled from "styled-components";
 
 const CenterDiv = styled.div`
@@ -13,14 +13,48 @@ const Column = styled.div`
   padding: 3rem;
 `;
 
+// ENTER TITLE STYLING
+const TextTitle = styled.input`
+  background-color: white;
+  color: black;
+  font-size: 30px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  margin: 10px 0px;
+  cursor: pointer;
+  }
+`;
+
+// ENTER CONTENT STYLING
+const TextContent = styled.textarea`
+  background-color: white;
+  color: black;
+  font-size: 20px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  margin: 10px 0px;
+  cursor: pointer;
+  }
+`;
+
+// BUTTON STYLING
 const Button = styled.button`
-// display: flex;
-// justify-content: center;
-// align-item: center;
   background-color: black;
   color: white;
   font-size: 15px;
   padding: 10px 50px;
+  border-radius: 20px;
+  margin: 10px 0px;
+  cursor: pointer;
+  }
+`;
+
+// RETURN TO HOME PAGE BUTTON
+const BackButton = styled.button`
+  background-color: red;
+  color: white;
+  font-size: 20px;
+  padding: 3px 15px;
   border-radius: 20px;
   margin: 10px 0px;
   cursor: pointer;
@@ -34,26 +68,29 @@ const CreateNew = (props: any) => {
       <CenterDiv>
         <form onSubmit={props.savePost}>
           <Column>
-            <Typography variant="h3">Create New Post</Typography>
-            <input
+            <Typography variant="h4">Create New Post</Typography>
+            {/* TITLE */}
+            <TextTitle
               type="text"
               onChange={props.savePostTitleToState}
-              placeholder="title"
-              required
+              placeholder="Title of post"
               ref={props.getTitle}
-            ></input>
-            <textarea
-              onChange={props.savePostContentToState}
-              placeholder="contents"
               required
+            />
+
+            {/* CONTENTS */}
+            <TextContent
+              onChange={props.savePostContentToState}
+              placeholder="Post contents"
               ref={props.getContent}
-            ></textarea>
+              required
+            />
             <Button>Save Post</Button>
           </Column>
-          {/* <a href="localhost:3000/" target="home">
-            <Button> Back </Button>
-          </a> */}
         </form>
+        <a href="/" target="home">
+          <BackButton> Back </BackButton>
+        </a>
       </CenterDiv>
     </>
   );
